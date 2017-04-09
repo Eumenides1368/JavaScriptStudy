@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>购物清单</title>
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<style type="text/css">
+		body{
+			margin-left: 30px;
+		}
+	</style>
+</head>
+<body>
+	<h1>购物清单</h1>
+	<p>别忘了买</p>
+	<ul id = "purchase">
+		<li>一堆豆子</li>
+		<li class="sale">蛋糕</li>
+		<li class="sale important">牛奶</li>
+	</ul>
+
+	<button class="btn btn-primary" onclick="getId()">根据id</button> 
+	<br/><br/>
+	<button class="btn btn-info" onclick="getTagName()">根据TagName</button> 
+	<br/><br/>
+	<button class="btn btn-success" onclick="getTagNameByX()">根据通配符</button>
+	<br/><br/>
+	<button class="btn btn-warning" onclick="mix()">混合使用</button>
+	<br/><br/>
+	<button class="btn btn-danger" onclick="getClassName()">根据className</button>
+
+	<script type="text/javascript">
+		function getId(){
+			alert(typeof document.getElementById("purchase"));
+		}
+		
+		function getTagName(){
+			alert(document.getElementsByTagName("li").length);
+			for(var i = 0; i < document.getElementsByTagName("li").length; i++){
+				alert(typeof document.getElementsByTagName("li")[i]);
+			}
+		}
+
+		function getTagNameByX(){
+			var items = document.getElementsByTagName("*");
+			alert(items.length);
+		}
+		
+		function mix(){
+			//purchase下无须清单里的元素个数
+			var shopping = document.getElementById("purchase");
+			var items = shopping.getElementsByTagName("*");
+			alert(items.length)
+			var items2 = shopping.getElementsByClassName("sale");
+			alert(items2.length);
+		}
+
+		function getClassName(){
+			var items = document.getElementsByClassName("sale");
+			alert(items.length);
+		}
+	</script>
+</body>
+</html>

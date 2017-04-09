@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>购物清单</title>
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<style type="text/css">
+		body{
+			margin-left: 30px;
+		}
+	</style>
+</head>
+<body>
+	<h1>购物清单</h1>
+	<p title="a gentle reminder" id = "don not forget">别忘了买</p>
+	<p>忘了就忘了吧</p>
+	<ul id = "purchase">
+		<li title="bean">一堆豆子</li>
+		<li class="sale">蛋糕</li>
+		<li class="sale important">牛奶</li>
+	</ul>
+
+	<button class="btn btn-primary" onclick="getAttr()">确定属性</button> 
+	<br/><br/>
+	<button class="btn btn-info" onclick="setAttr()">设定属性</button> 
+	<br/><br/>
+	<button class="btn btn-default" onclick="changeP()">改变P标签</button> 
+	<br/><br/>
+	
+	<script type="text/javascript">
+		function getAttr(){
+			var paras = document.getElementsByTagName("p");
+			for(var i = 0; i < paras.length; i++){
+				var text_title = paras[i].getAttribute("title");
+				if (text_title != null) {
+					alert(paras[i].getAttribute("title"));
+					//alert(paras[i].getAttribute("id"));
+				}
+			}
+		}
+
+		function setAttr(){
+			var shopping = document.getElementById("purchase");
+			shopping.setAttribute("title", "a list of goods");
+			alert(shopping.getAttribute("title"));
+		}
+
+		function changeP(){
+			var paras = document.getElementsByTagName("p");
+			for (var i = 0; i < paras.length; i++) {
+				paras[i].setAttribute("title", "nothing");
+				alert(paras[i].getAttribute("title"));
+			}
+		}
+
+	</script>
+</body>
+</html>

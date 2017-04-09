@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.mystyle{
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div class="mystyle">
+		<h1>人民的名义</h1>
+		<br/>
+		<br/>
+		<input type="button" name="show" value="显示人员" onclick="showname()"/>
+	</div>
+	<br/>
+	<div class="mystyle">
+		<h1>两数相乘</h1>
+		<input type="text" name="num1" id ="num1" value="1"/>
+		<input type="text" name="num2" id ="num2" value="2"/><br/>
+		<input type="button" name="mult" value="乘法" onclick="mult()">
+	</div>
+	<br/>
+
+	<script type="text/javascript">
+		function showname(){
+			var name = ["达康书记","育良书记","小金子"];
+			for (var i = name.length - 1; i >= 0; i--) {
+				alert(name[i]);
+			}
+		}
+
+		function mult(){
+			var num1 = document.getElementById("num1").value;
+			var num2 = document.getElementById("num2").value;
+			alert(num1 * num2);
+		}
+
+		function square(num）{
+			total = num * num;
+			return total;
+		}
+		var total = 50;
+		var number = square(20);
+		alert(total);
+	</script>
+</body>
+</html>
