@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>momo</title>
+	
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	
+	<style type="text/css">
+		body{
+			padding: 30px;
+		}
+
+		.image{
+			height: 200px;
+			width: 150px;
+		}
+
+		ul{
+			padding: 0;
+		}
+
+		li{
+			/*tab*/
+			float: left;
+			padding: 1em;
+			list-style: none;
+		}
+
+		img{
+			/*块级元素，前后有换行符*/
+			display: block;
+			/*某一侧不允许浮动其他元素*/
+			clear: both;
+		}
+
+		a{
+			background-color: transparent; 
+		}
+	</style>
+</head>
+<body>
+	<h1>momo</h1>
+	<ul>
+		<li>
+			<a href="image/momo1.jpg" title="momo1" onclick="showPic(this); return false;">momo1</a>
+		</li>
+		<li>
+			<a href="image/momo2.jpg" title="momo2" onclick="showPic(this); return false">momo2</a>
+		</li>
+		<li>
+			<a href="image/momo3.jpg" title="momo3" onclick="showPic(this); return false">momo3</a>
+		</li>
+		<li>
+			<a href="image/momo4.jpg" title="momo4" onclick="showPic(this); return false">momo4</a>
+		</li>
+	</ul>
+	<img id = "momo1" src="image/momo1.jpg" alt="momo1" class="image" /><br/><br/>
+	<button class="btn btn-primary" onclick="countBodyChildren()">计算结点数</button>
+
+	<p id="description">选择一张图</p>
+
+	<!--<a href="www.baidu.com" onclick="return false;">试试</a>-->
+
+	<script type="text/javascript">
+		function showPic(whichPic){
+			var source = whichPic.getAttribute("href");
+			var placeholder = document.getElementById("momo1");
+			placeholder.setAttribute("src", source);
+			var text = whichPic.getAttribute("title");
+			var description = document.getElementById("description");
+			description.firstChild.nodeValue = text;
+		}
+
+		function countBodyChildren(){
+			var body_element = document.getElementsByTagName("body")[0];
+			alert(body_element.childNodes.length);
+			//页面加载时调用countBodyChildren()函数
+			window.onload = countBodyChildren;
+		}
+	</script>
+</body>
+</html>
