@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+    <link rel="stylesheet" href="../bootstrap.css">
+    <style>
+        body{
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <h5>请输入1-10之间的数字</h5>
+        <input type="text" id="number" />
+        <button class="btn btn-info" onclick="numberCheck()">提交</button>
+        <p id="show"></p>
+    </form>
+
+    <form name="myForm" action="" onsubmit="return validateForm()" method="post">
+        <p>输入姓名</p>
+        <input type="text" name="fname"/>
+        <input type="submit" class="btn btn-success" value="姓名">
+    </form>
+
+    <form action="" method="post">
+        <p>错误信息</p>
+        <input type="text" name="fname" required/>
+        <input type="submit" class="btn btn-success" value="提交">
+    </form>
+
+    <form>
+        <p>输入数字并验证</p>
+        <input id="numcheck" type="number" min="100" max="300" required/>
+        <button onclick="numCheck()" class="btn btn-success">验证</button>
+        <p id="result"></p>
+    </form>
+
+    <a href="javascript:void(0)">并没有什么用</a><br/>
+    <a href="javascript:void(alert('warning'))">还是有点用的</a>
+    <script>
+        function numberCheck() {
+            var num = document.getElementById("number").value;
+            if(isNaN(num) || num<0 || num>10)
+                var text = "输入错误";
+            else
+                var text = "输入正确";
+            document.getElementById("show").innerHTML = text;
+        }
+        
+        function validateForm() {
+            var name = document.forms["myForm"]["fname"].value;
+            if(name == null || name == "")
+                alert("需要输入名字");
+            return false;
+        }
+        
+        function numCheck() {
+            var ini = document.getElementById("numcheck");
+            if (ini.checkValidity() == false)
+                document.getElementById("result").innerHTML = ini.validationMessage;
+            else
+                document.getElementById("result").innerHTML = "输入正确";
+        }
+    </script>
+</body>
+</html>
+
+<!--
+
+
+
+
+
+-->

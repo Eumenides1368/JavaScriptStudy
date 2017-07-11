@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM</title>
+    <link rel="stylesheet" href="bootstrap.css"/>
+    <style>
+        body{
+            padding: 30px;
+        }
+    </style>
+    <script src="jquery.js"></script>
+</head>
+<body>
+    <p title="选择你最喜欢的水果">你最稀罕的水果是？</p>
+    <ul>
+        <li title="apple">苹果</li>
+        <li title="orange">橘子</li>
+        <li title="peace">桃子</li>
+    </ul>
+
+    <script>
+        $(document).ready(function () {
+//            查找元素结点
+            var $li = $("ul li:eq(1)");
+            var li_txt = $li.text();
+//            alert(li_txt);
+
+//            查找属性结点
+            var $para = $("p");
+            var p_txt = $para.text();
+//            alert(p_txt);
+
+//            创建元素结点
+            var $li_1 = $("<li>菠萝</li>");
+            var $li_2 = $("<li>香蕉</li>");
+            $("ul").append($li_1);
+            $("ul").append($li_2);
+
+//             插入结点的方法
+            $("p").append("<p><b>你好啊！</b></p>");
+            $("<p><b>你好啊！</b></p>").appendTo("p");
+            $("p").prepend("<b>好想吃啊</b>")
+
+            $("ul li:eq(1)").after("<b>这个好吃</b>")
+
+//            创建新元素
+            var $li_first = $("<li title='yoghurt'>莫斯利安</li>");
+            var $li_second = $("<li title='shrimp'>小龙虾</li>");
+            var $li_third = $("<li title='other'>其他</li>");
+
+            var $parent = $("ul");
+            var $li_two = $("ul li:eq(1)");
+            $parent.append($li_first);
+            $parent.append($li_second);
+            $li_third.insertAfter($li_two);
+
+            //移动元素
+            var $one_li = $("ul li:eq(0)");
+            var $two_li = $("ul li:eq(1)");
+            var $one_li_txt = $one_li.text();
+//          alert($one_li_txt);
+            $one_li.append("<b>111</b>");
+            $two_li.append("<b>222</b>");
+            $two_li.insertBefore($one_li);
+
+            var li = $("ul li:eq(0)").remove();
+
+            $("ul li").click(function () {
+//                alert($(this).html());
+                $(this).clone().appendTo("ul");
+            })
+            var $li = $("ul li:eq(0)").detach();
+            $li.appendTo("ul");
+
+            $("ul li:eq(2)").empty();
+        });
+
+    </script>
+</body>
+</html>

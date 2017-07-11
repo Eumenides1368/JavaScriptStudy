@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>间隔指定时间</title>
+</head>
+<body>
+<form>
+		<input type="text" name="mytxt" id="clock" />
+	</form>
+	<script type="text/javascript">
+  		var int=setInterval(clock, 10000);
+  		function clock(){
+    		var time=new Date();
+    		var attime = time.getHours() + ":" + time.getMinutes() + ":" +　time.getSeconds();
+    		document.getElementById("clock").value = attime;
+  		}
+</script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>XX大型购物网站</title>
+    <link href="bootstrap.css" rel="stylesheet"/>
+    <script src="jquery.js"></script>
+    <style>
+        ul,li{
+            float: left;
+            display: block;
+            padding: 20px;
+        }
+
+        .btn{
+            margin-left: 500px;
+        }
+
+        .promoted{
+            font-size: 60px;
+        }
+    </style>
+</head>
+<body>
+    <div class="subCategoryBox">
+        <ul>
+            <li><a href="#">佳能</a><i>(234234)</i></li>
+            <li><a href="#">索尼</a><i>(234234)</i></li>
+            <li><a href="#">三星</a><i>(234234)</i></li>
+            <li><a href="#">尼康</a><i>(234234)</i></li>
+            <li><a href="#">松下</a><i>(234234)</i></li>
+            <li><a href="#">卡西欧</a><i>(234234)</i></li>
+            <li><a href="#">柯达</a><i>(234234)</i></li>
+            <li><a href="#">理光</a><i>(234234)</i></li>
+            <li><a href="#">爱国者</a><i>(234234)</i></li>
+            <li><a href="#">明基</a><i>(234234)</i></li>
+            <li><a href="#">其他品牌</a><i>(234234)</i></li>
+        </ul>
+        <a href="#" class="more">
+            <button class="btn btn-primary">显示全部品牌</button>
+        </a>
+    </div>
+
+<script>
+    $(function () {
+        var $category = $("ul li:gt(5):not(:last)");
+        $category.hide();
+
+        //获取显示品牌按钮
+        var $toggleBtn = $("a.more > button");
+        $toggleBtn.click(function () {
+            /*
+            $category.show();
+            $(this).find("span")
+                .css("background", "red")
+                .text("显示全部品牌");
+            $("ul li").filter(":contains('佳能').:contains('尼康')")
+                .addClass("promoted");
+
+            return false;
+
+            */
+
+
+            if($category.is(":visible")){
+                $category.hide();
+                $(this).find("span")
+                    .css("background", "red")
+                    .text("显示全部品牌");
+                $("ul li").removeClass("promoted");
+            }else{
+                $category.show();
+                $(this).find("span")
+                    .css("background", "red")
+                    .text("精简显示品牌");
+                $("ul li").filter(":contains('佳能').:contains('尼康')")
+                    .addClass("promoted");
+            }
+
+            return false;
+
+        })
+
+
+
+    })
+
+
+</script>
+</body>
+</html>

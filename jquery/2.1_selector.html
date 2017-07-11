@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>很多框框</title>
+    <link rel="stylesheet" href="bootstrap.css"/>
+    <script src="jquery.js"></script>
+    <style>
+        body{
+            padding: 20px;
+        }
+        .col-lg-4{
+            height: 200px;
+            border: 1px solid darkblue;
+            padding: 10px;
+            /*margin: 5px;*/
+        }
+
+        .col-md-4{
+            height: 80px;
+            border: 1px solid gainsboro;
+            padding: 5px;
+        }
+        form{
+            margin-top: 20px;
+            margin-left: 40px;
+            width: 200px;
+            height: auto;
+            border: 1px solid aqua;
+        }
+    </style>
+</head>
+<body>
+    <!--<div id="container">-->
+        <div class="col-lg-4 one" id="one">
+            id为one，class为one
+            <div class="mini">class为mini</div>
+        </div>
+        <div class="col-lg-4 one" id="two" title="test">
+            <p>id为one，class为two</p>
+            <div class="col-md-4" title="other">title是other</div>
+            <div class="col-md-4" title="other">title是other</div>
+        </div>
+        <div class="col-lg-4 one">
+            <div class="col-md-4">消灭人类暴政</div>
+            <div class="col-md-4">世界属于三体</div>
+            <div class="col-md-4">消灭人类暴政</div>
+            <!--<div class="col-md-4"></div>-->
+        </div>
+    <!--</div>-->
+    <!--<div class="container">-->
+        <div class="col-lg-4 one">
+            <div class="col-md-4">消灭人类暴政</div>
+            <div class="col-md-4">世界属于三体</div>
+            <div class="col-md-4">消灭人类暴政</div>
+            <div class="col-md-4" title="test">世界属于三体！</div>
+        </div>
+        <div class="col-lg-4 none">
+            这个真没有！
+        </div>
+        <div class="col-lg-4">
+            有hidden<div><input type="hidden" size="none"></div>
+        </div>
+        <span id="mover">一个span元素</span>
+        <span><input type="hidden" value="看不见我！"/></span>
+        <div style="display: none;"></div>
+    <!--</div>-->
+        <form id="form1" action="#">
+            可用元素:<input type="text" name="add" value="可用文本框"/><br/>
+            不可用元素:<input type="email" name="email" disabled="disabled" value="不可用文本框"><br/>
+            <p>多选框</p>
+            <input type="checkbox" name="letter" checked="checked" value="test1">test1
+            <input type="checkbox" name="letter" value="test2">test2
+            <input type="checkbox" name="letter" value="test3">test3
+            <input type="checkbox" name="letter" value="test4">test4
+            <input type="checkbox" name="letter" checked="checked" value="test5">test5
+            <br/>
+            <p>下拉列表</p>
+            <select name="test" multiple="multiple" style="height: 100px;">
+                <option>浙江</option>
+                <option>北京</option>
+                <option selected="selected">湖南</option>
+                <option>广东</option>
+                <option selected="selected">天津</option>
+            </select>
+            <br/>
+            <p>下拉列表</p>
+            <select name="test2">
+                <option>浙江</option>
+                <option>湖南</option>
+                <option selected="selected">北京</option>
+                <option>广东</option>
+                <option>天津</option>
+                <option selected="selected">湖北</option>
+            </select>
+
+        </form>
+
+<script>
+    //层次选择器
+/*
+    $(document).ready(function () {
+//        body内所有div
+          $("body div").css("background", "#bbccdd");
+//        body内子div
+          $("body > div").css("background", "#aabbcc");
+//        class为one的下一个div同辈元素的背景色
+          $(".one + div").css("background", "#ffffff");
+          $(".one").next("div").css("background", "red");
+//        id为two的后面所有div的背景色
+          $("#two ~ div").css("background", "#edacbd");
+
+    })
+   */
+
+//过滤选择器
+    /*
+    $(document).ready(function () {
+//        改变第一个div的背景色
+//        $("div:first").css("background","#ffa54f");
+//        改变最后一个div的背景色
+//        $("div:last").css("background","#ffa54f");
+//        所有div无论层级
+//        $("div:not(.one)").css("background", "#f7f7f7");
+        $("div:even").css("background","#eeeee0");
+        $("div:eq(3)").css("background","blue");
+        $("div:lt(3)").css("background","grey");
+//        获得焦点的元素
+        $(":focus").css("background","red");
+        $("div:hidden").show(3000);
+    });
+    */
+    
+    //属性过滤选择器
+    /*
+    $(document).ready(function () {
+        $("div[title]").css("background","blue");
+        $("div[title=test]").css("background","green");
+        $("div[title^=te]").css("background", "red");
+        $("div[title*=te]").css("background","yellow");
+    })*/
+
+    //子元素过滤选择器
+    $(document).ready(function () {
+        $("div :nth-child(even)").css("background","yellow");
+        $("div :first-child").css("background","blue");
+    });
+
+    $(document).ready(function () {
+        var items = $("form1 :input").length;
+        alert(items);
+
+        var check = $("input[name='letter']:checked");
+        alert("选中的个数为:" + check.length);
+    })
+</script>
+</body>
+</html>

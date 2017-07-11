@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>window</title>
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<style type="text/css">
+		body{
+			padding: 30px;
+		}
+
+		h2{
+			margin-top: 10px;
+		}
+
+		.btn{
+			display: block;
+			clear: both;
+			margin-top: 10px;
+		}
+
+		#tab{
+			width: 290px;
+			padding: 5px;
+			height: 150px;
+			margin: 20px;
+		}
+		#tab ul{
+			display: block;
+			list-style: none;
+			height: 30px;
+			line-height: 30px;
+			/*border-bottom: 2px solid #bbb;*/
+		}
+		#tab ul li{
+			float: left;
+			list-style: none;
+			cursor: pointer;
+			height: 28px;
+			line-height: 28px;
+			margin: 0px;
+			border:1px solid #aaa;
+		}
+		#tab div{
+			height: 120px;
+			line-height: 25px;
+			border:1px;
+			border: 2px solid #aaa;
+		}
+	</style>
+</head>
+<body>
+
+	<h2>单击弹框</h2>
+	<button class="btn btn-primary" onclick="rec()">慕课网</button>
+	<button class="btn btn-default" onclick="baidu()">百度一下</button>
+	
+	<script type="text/javascript">
+		function rec(){
+
+			var mymessage=confirm("欢迎来到慕课网");
+
+			if(mymessage==true){
+
+       			window.open('http://www.imooc.com','_blank','height=600,width=400');
+
+    		}
+
+    	}
+
+    	// 弹出新网页
+    	function baidu(){
+    		var message = confirm("百度or谷歌");
+    		if (message == true) {
+    			window.open('https://www.baidu.com/', '_blank', 'height=600,width=1000');
+    		}else if (message ==false) {
+    			window.open('http://www.imooc.com/', '_blank','height=600,width=1000');
+    		}
+   		}
+	</script>
+
+	<h2>间隔时间执行代码</h2>
+
+	<form>
+		<input type="text" name="mytxt" id="clock" />
+		<button class="btn btn-success" onclick="clearInterval(int)">清除计时</button>
+	</form>
+	<script type="text/javascript">
+  		var int=setInterval(clock, 1000);
+  		function clock(){
+    		var time=new Date();
+    		var attime = time.getHours() + ":" + time.getMinutes() + ":" +　time.getSeconds();
+    		document.getElementById("clock").value = attime;
+  		}
+	</script>
+
+	<h2>计时器</h2>
+	<form>
+		<input type="text" name="txt" id="numcount"/>
+		<button class=" btn btn-warning" onclick="numCount()">计数</button>
+	</form>
+	<script type="text/javascript">
+		var num=0;
+		function numCount(){
+ 			document.getElementById('numcount').value=num;
+ 			num=num+1;
+ 			setTimeout("numCount()",1000);
+ 		}
+		
+	</script>
+
+	<h2>历史记录</h2>
+	<script type="text/javascript">
+		var HL = window.history.length;
+		document.write(HL);
+	</script>
+
+	<h2>一个tab切换</h2>
+	<div id="tab">
+		<ul>
+			<li class="on">房产</li>
+			<li>家具</li>
+			<li>电器</li>
+		</ul>
+
+		<div>
+			房子啊。买不起!
+		</div>
+		<div class="hide">
+			房子都没有要什么家具!
+		</div>
+		<div class="hide">
+			房子都没有要什么电器!
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+		window.onload = function(){
+			var oTab = document.getElementById("tab");
+			var oUl = oTab.getElementsByTagName("ul")[0];
+			var oLis = oTab.getElementsByTagName("li");
+			var oDivs = oTab.getElementsByTagName("div");
+
+			for(var i = 0; i < oLis.length; i++){
+				oLis[i].index = i;
+				oLis[i].onclick = function(){
+					for(var n = 0; n < oLis.length; n++){
+						oLis[n].className = "";
+						oDivs[n].className = "hide";
+					}
+					this.className = "on";
+					oDivs[this.index].className = "";
+				}
+			};
+		}
+	</script>
+
+</body>
+</html>

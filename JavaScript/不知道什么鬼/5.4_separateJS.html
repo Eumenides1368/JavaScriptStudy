@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<style type="text/css">
+		body{
+			padding: 40px;
+		}
+
+		.btn{
+			display: block;
+			clear: both;
+		}
+
+		a{
+			display: block;
+			clear: both;
+		}
+	</style>
+
+	<script type="text/JavaScript">
+		window.onload = function() {
+ 			if (!document.getElementsByTagName) 
+ 				return false;
+  			var links = document.getElementsByTagName("a");
+  			for (var i=0; i<links.length; i++) {
+    			if (links[i].getAttribute("class") == "popUp") {
+      				links[i].onclick = function() {
+       					popUp(this.getAttribute("href"));
+        				return false;
+      				}
+    			}
+  			}
+		}
+
+		function popUp(winURL) {
+  			window.open(winURL,"popUp","width=320,height=480");
+		}
+
+</script>
+</head>
+<body>
+	<a href="http://www.example.com/" class="popUp">试试</a>
+	<a href="http://www.baidu.com/" class="popUp">试试</a>
+	<a href="http://www.baidu.com/" class="popUp">试试</a>
+	<a href="http://www.baidu.com/">试试</a>
+
+<!-- 
+	<script type="text/javascript">
+
+		window.onload = prepareLinks;
+		function prepareLinks(){
+			var links = document.getElementsByTagName("a");
+			for(var i = 0; i <links.length; i++){				
+				if(links[i].getAttribute("class") == "popUp"){
+					links.onclick = function(){
+						popUp(this.getAttribute("href"));
+						return false;
+					}
+				}
+			}
+		}
+
+		function popUp(winURL){
+			window.open(winURL, "popUp", "width=320,height=480");
+		}
+		
+	</script> -->
+
+</body>
+</html>

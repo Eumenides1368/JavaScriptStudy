@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Date</title>
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<style type="text/css">
+		body{
+			padding: 40px;
+		}
+
+		.btn{
+			display: block;
+			clear: both;
+		}
+	</style>
+</head>
+<body>
+	<h1>Date相关用法</h1>
+	<button class="btn btn-primary" onclick="year()">显示年份</button><br/>
+	<button class="btn btn-default" onclick="day()">显示星期</button><br/>
+	<button class="btn btn-success" onclick="delay()">推迟一小时</button>
+	<script type="text/javascript">
+	
+	var mydate = new Date();
+	var weekday = ["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
+	var mynum = mydate.getDay();
+
+	function year(){
+		
+		alert(mydate + "\n" + mydate.getFullYear());
+		mydate.setFullYear(1368);
+		alert(mydate);
+	}
+
+	function day(){
+		alert(mydate.getDay() + "\n" + "今天是" + weekday[mynum]);
+	}
+
+	// function delay(){
+	// 	var newdate = new Date();
+	// 	alert(newdate);
+	// 	newdate.setTime(newdate.getTime() + 60 * 60 * 1000)；
+	// 	alert("推迟一小时" + newdate);
+	// }	 
+		
+	</script>
+
+	
+</body>
+</html>

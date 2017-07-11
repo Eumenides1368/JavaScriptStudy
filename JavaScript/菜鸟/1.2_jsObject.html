@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js对象</title>
+    <link rel="stylesheet" href="../bootstrap.css">
+    <style>
+        body{
+            padding:20px;
+        }
+    </style>
+</head>
+<body>
+    <p>创建javascript对象</p>
+    <p id="demo"></p>
+    <button class="btn btn-success" onclick="welcome('harry')">欢迎</button>
+    <p id = "show"></p>
+    <button class="btn btn-info" onclick="regSearch()">正则表达式查询</button>
+    <p id="change">hello micro</p>
+    <button class="btn btn-info" onclick="regChange()">正则表达式替换</button><br/><br/>
+    <button class="btn btn-info" onclick="matchReg()">正则表达式匹配</button>
+    <p id="match"></p>
+    <input type="text" id="decimal" />
+    <button class="btn btn-info" onclick="isDecimal()">验证是否有小数</button><br/><br/>
+    <input type="text" id="chinese" />
+    <button class="btn btn-info" onclick="isChinese()">验证是否有汉字</button><br/><br/>
+    <input type="text" id="times" />
+    <button class="btn btn-info" onclick="times()">验证出现次数是否为8次</button><br/><br/>
+    <input type="text" id="tel" />
+    <button class="btn btn-info" onclick="isTel()">验证电话号码</button><br/><br/>
+    <input type="text" id="email" />
+    <button class="btn btn-info" onclick="isEmail()">验证邮件</button><br/><br/>
+    <script>
+        var person = {
+            name : "John",
+            age : 30,
+            eye : "black",
+            name_age : function () {
+                return this.name + this.age;
+            }
+        };
+
+        document.getElementById("demo").innerHTML = "此人叫" + person.name
+            + "年龄" + person.age + "眼睛颜色" + person.eye + "<br>" + person.name_age();
+
+        function welcome(name) {
+            alert("欢迎" + name);
+        }
+
+        document.getElementById("show").innerHTML =
+            typeof "hello" + "<br/>" +
+            typeof 1234 + "<br/>" +
+            typeof 33.2 + "<br/>" ;
+
+        function regSearch(){
+            var str = "hahah rooob";
+//            正则表达式校验
+            var n = str.search(/roo/i);
+            alert(n);
+        }
+
+        function regChange() {
+            var str = document.getElementById("change").innerHTML;
+            var text = str.replace(/micro/i, "rooo");
+            document.getElementById("change").innerHTML = text;
+        }
+        
+        function matchReg() {
+//          alert(/e/.test('hello world eee'));
+            document.getElementById("match").innerHTML = String(/e/.exec("hello"));
+        }
+
+//        是否带有小数
+        function isDecimal() {
+            var num = document.getElementById("decimal").value;
+//            alert(num);
+            var reg = /^\d+\.\d+$/;
+            alert(reg.test(num));
+        }
+
+//        是否带有汉字
+//        {2,4}表出现次数
+        function isChinese() {
+            var str = document.getElementById("chinese").value;
+            var reg = /^[\u4E00-\u9FA5]{2,4}$/;
+            alert(reg.test(str));
+        }
+
+        function times() {
+            var num = document.getElementById("times").value;
+            var reg = /^[0-9]{8}$/;
+            alert(reg.test(num));
+        }
+
+        function isTel() {
+            var tel = document.getElementById("tel").value;
+            var reg = /^(1[358]\d{9})$/;
+            alert(reg.test(tel));
+        }
+
+        function isEmail() {
+            var email = document.getElementById("email").value;
+            var reg = /^([a-zA-Z0-9-_])+@([a-zA-Z0-9-_])+\.([a-zA-Z0-9])+$/;
+            alert(reg.test(email));
+        }
+    </script>
+</body>
+</html>

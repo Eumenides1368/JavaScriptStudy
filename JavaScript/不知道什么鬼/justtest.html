@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+
+</head>
+<body>
+<form>
+		<input type="text" name="txt" id="txt"/>
+		<button class=" btn btn-warning" onclick="numCount()">计数</button>
+	</form>
+	<script type="text/javascript">
+		var num = 0;
+		function numCount(){
+			document.getElementById('txt').value = num;
+			num = num + 1；
+			setTimeout("numCount()", 1000 );
+		}
+		
+	</script>
+</body>
+</html>

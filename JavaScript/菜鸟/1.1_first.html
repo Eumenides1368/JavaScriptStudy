@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>菜鸟教程</title>
+    <link rel="stylesheet" href="../bootstrap.css">
+    <script>
+        function dispalyDate() {
+            document.getElementById("demo").innerHTML = Date();
+        }
+
+        function change() {
+            document.getElementById("change").innerHTML = "改变之后";
+        }
+
+        function cal(){
+            alert(1+2);
+        }
+        function mydate() {
+            document.write(Date());
+        }
+
+        function showconsole() {
+            a = 6;
+            b = 10;
+            c = a + b;
+            console.log(c);
+        }
+    </script>
+    <style>
+        body{
+            padding:20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>显示日期</h1>
+    <p id="demo">今天是</p>
+    <button class="btn btn-primary" onclick="dispalyDate()">显示日期</button>
+    <h1>改变HTML的内容</h1>
+    <p id="change">随便叫什么吧</p>
+    <button class="btn btn-danger" onclick="change()">改变HTML的内容</button>
+    <br/>
+    <button class="btn btn-info" onclick="cal()">计算</button>
+    <br>
+    <p id="date">显示日期</p>
+    <button class="btn btn-info" onclick="mydate()">今天几号</button>
+    <p>控制台显示</p>
+    <button class="btn btn-success" onclick="showconsole()">控制台输出</button>
+</body>
+</html>

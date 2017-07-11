@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>变量</title>
+    <link href="../bootstrap.css">
+</head>
+<body>
+    <script>
+        function setName(obj) {
+            obj.name = "Mike";
+            obj = new Object();
+            obj.name = "Alice";
+        }
+
+        var person = new Object();
+        setName(person);
+        alert(person.name);
+        alert(person instanceof Object);
+
+        var person = new Object();
+        person.name = "小明";
+        person.age = 35;
+
+        var person = {
+            "name" : "小明",
+            "age" : 35
+        };
+
+        var colors = ["red", "green", "blue"];
+        alert(colors.join("||"));
+    </script>
+</body>
+</html>
