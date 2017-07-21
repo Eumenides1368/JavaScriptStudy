@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>栈的方法测试</title>
+</head>
+<body>
+<p id="color"></p>
+    <script>
+        <!--关于Array的栈方法-->
+        var colors = new Array();
+        var count = colors.push("红色", "绿色");
+        alert(count);
+
+        count = colors.push("黑色");
+        alert(count);
+
+        for(var i = 0; i < colors.length; i++){
+            document.write(colors[i]);
+        }
+
+        colors.pop();
+
+        alert("弹出后" + colors.length)
+    </script>
+</body>
+</html>

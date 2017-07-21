@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>创建对象</title>
+</head>
+<body>
+<script>
+    <!--工厂模式,基本弃之不用-->
+    function createPerson(name, age, job) {
+        var o = new Object();
+        o.name = name;
+        o.age = age;
+        o.job = job;
+        o.sayName = function () {
+            alert("Hi " +　this.name);
+        }
+        return o;
+    }
+    var person1 = createPerson("Ni", 33, "SE");
+    var person2 = createPerson("Greg", 44, "CS");
+
+//    构造函数模式
+    function Person(name, age, job) {
+        this.name = name;
+        this.age = age;
+        this.job = job;
+        this.sayName = function () {
+//            alert(this.name);
+        }
+    }
+    var person3 = new Person("Ni", 33, "SE");
+
+    //原型模式
+    function Person() {
+
+    }
+    Person.prototype.name = "Ni";
+    Person.prototype.age = 42;
+    Person.prototype.job = "SoftWare";
+    Person.prototype.sayName = function () {
+        alert(this.name);
+    };
+     var p1 = new Person();
+     var p2 = new Person();
+
+     //来自原型
+     alert(p1.hasOwnProperty("name"));
+     alert("name" in p1);
+
+     //来自实例
+     p1.name = "Gibbs";
+     alert(p1.hasOwnProperty("name"));
+     alert("name" in p1);
+
+     delete p1.name;
+     alert(p1.name);
+     alert(p1.hasOwnProperty("name"));
+     alert("name" in p1);
+</script>
+</body>
+</html>

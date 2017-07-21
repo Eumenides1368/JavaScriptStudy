@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数递归 </title>
+</head>
+<body>
+<script>
+    function a() {
+        var i = 0;
+        function b() {
+            i++;
+            alert(i);
+        }
+        return b;
+    }
+    var c = a();
+//    c();
+
+
+    function createFunctions() {
+        var result = new Array();
+        for(var i = 0; i < 10; i++){
+            result[i] = function () {
+                return i;
+            };
+        }
+        return result;
+    }
+    alert(createFunctions());
+</script>
+</body>
+</html>

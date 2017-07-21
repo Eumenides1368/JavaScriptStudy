@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基本包装类</title>
+</head>
+<body>
+<script>
+    var value = "24";
+    var number = Number(value);
+    alert(typeof number);//number
+
+    var obj = new Number(value);
+    alert(typeof obj);//object
+
+    var msg = "hello world";
+    eval("alert(msg)");
+    alert("msg" +　msg);
+
+    eval("function sayHi(){alert('Hi');}");
+    sayHi();
+</script>
+</body>
+</html>

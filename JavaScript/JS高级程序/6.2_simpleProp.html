@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型的简化版</title>
+</head>
+<body>
+<script>
+    //原型方法定义对象的简化版
+    function Person() {
+    }
+
+    Person.prototype = {
+        name: "Ni",
+        age: 33,
+        job: "SE",
+        sayName: function () {
+            alert(this.name);
+        }
+    };
+
+</script>
+</body>
+</html>

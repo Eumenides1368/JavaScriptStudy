@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RegExp类型</title>
+    <link rel="stylesheet" href="bootstrap.css"/>
+    <style>
+        body{
+            padding: 30px;
+        }
+    </style>
+</head>
+<body>
+<h3>RegExp表达式</h3>
+<button class="btn btn-primary" onclick="compare()">对比</button><br/><br/>
+<button class="btn btn-success" onclick="getAttr()">获取属性</button><br/><br/>
+<button class="btn btn-default" onclick="getFunc()">实例方法</button><br/><br/>
+<button class="btn btn-info" onclick="getFuncGlobal()">是否设置全局标志的实例方法</button><br/><br/>
+<button class="btn btn-warning" onclick="isMatch()">验证正则表达式是否匹配</button><br/><br/>
+<button class="btn btn-danger" onclick="longAttr()">构造方法的长属性</button><br/><br/>
+<button class="btn btn-success" onclick="shortAttr()">构造方法的短属性</button><br/><br/>
+<script>
+    function compare() {
+        var re = null;
+        var i;
+        for (i = 0; i < 3; i++){
+            re = /cat /g;
+            alert("字面量形式定义" + re.test("cat"));
+        }
+
+        for (i = 0; i < 10; i++){
+            re = new RegExp("cat", "g");
+            alert("RegExp形式定义" + re.test("catastrophe"));
+        }
+    }
+
+    function getAttr() {
+        var pattern1 = / \[bc\] at /i;
+        alert(pattern1.global);
+        alert(pattern1.ignoreCase);
+        alert(pattern1.multiline);
+        alert(pattern1.lastIndex);
+        alert(pattern1.source);
+
+        var pattern2 = new RegExp("\\[bc\\]at", "i");
+        alert(pattern2.global);
+        alert(pattern2.ignoreCase);
+        alert(pattern2.multiline);
+        alert(pattern2.lastIndex);
+        alert(pattern2.source);
+    }
+
+    function getFunc() {
+        var text = "mom and dad and baby";
+        var pattern = /mom (and dad (and) ? baby)?/gi;
+        var matches = pattern.exec(text);
+        alert("index: " +　matches.index);
+        alert("input: " + matches.input);
+        alert(matches[0]); //此处显示的内容是几重括号，括号表匹配的字符串，?表前面内容出现过一次或者两次
+        alert(matches[1]);
+        alert(matches[2]);
+    }
+
+    function getFuncGlobal() {
+        var text = "cat, bat, sat, fat";
+
+        //此处没有设置全局标志g，始终返回第一个匹配项
+        var pattern1 = /.at/;
+        var matches = pattern1.exec(text);
+        alert("没有全局标志,index: " + matches.index);
+        alert("没有全局标志 " + matches[0]);
+        alert("没有全局标志,最后一位" + pattern1.lastIndex);
+
+        //此处设置全局标志g，依次返回匹配项
+        var pattern2 = /.at/g;
+        var matches = pattern2.exec(text);
+        alert("有全局功能的index:" + matches.index);
+        alert("有全局功能" + matches[0]);
+        alert("有全局功能" + pattern2.lastIndex);
+
+        matches = pattern2.exec(text);
+        alert("(下一个)有全局功能的index:" + matches.index);
+        alert("(下一个)有全局功能" + matches[0]);
+        alert("(下一个)有全局功能" + pattern2.lastIndex);
+    }
+
+    function isMatch() {
+        var text = "000-00-0000";
+        var pattern = /\d{3}-\d{2}-\d{4}/g;
+        if (pattern.test(text))
+            alert("匹配成功！")
+    }
+
+    function longAttr() {
+        var text = "this has been a short summer";
+        var pattern = /(.)hort/g;
+        //此处是长属性名称
+        if(pattern.test(text)){
+            alert("输入" + RegExp.input);
+            alert("左边内容" + RegExp.leftContext);
+            alert("右边内容" + RegExp.rightContext);
+            alert("输入最后一次匹配" + RegExp.lastMatch);
+            alert("最近一次匹配的捕获组" + RegExp.lastParen);
+        }
+
+    }
+
+    function shortAttr() {
+        var text = "this has been a short summer";
+        var pattern = /(.)hort/g;
+
+        //短属性名，通过[]访问
+        if (pattern.test(text)){
+            alert("输入" +　RegExp.$_);
+            alert("左边" +　RegExp["$`"]);
+            alert("右边" +　RegExp["$'"]);
+            alert("最后一次匹配" +　RegExp["$&"]);
+            alert("捕获组" +　RegExp["$+"]);
+
+        }
+    }
+</script>
+</body>
+</html>

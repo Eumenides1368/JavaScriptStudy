@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript闭包</title>
+</head>
+<body>
+<script>
+    function fool(x) {
+        var tmp =3;
+        return function (y) {
+            alert(x + y + tmp);
+            x.memb = x.memb ? x.memb + 1 : 1;
+            alert(x.memb);
+        };
+    }
+    var age = new Number(2);
+    var bar = fool(age);
+    bar(10);
+</script>
+</body>
+</html>
