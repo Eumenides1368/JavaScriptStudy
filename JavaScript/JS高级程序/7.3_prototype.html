@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>prototype原型</title>
+</head>
+<body>
+<script>
+    <!--每一个函数都有一个属性叫做prototype-->
+    function Fun() {
+        Fun.prototype.name = "Gibbs";
+        Fun.prototype.getYear = function () {
+            return 1988;
+        };
+    }
+
+    var p = new Fun();
+    console.log(p.name);
+    console.log(p.getYear());
+
+//    每一个对象都有一个__proto__,可称为隐式原型
+    var obj = {};
+    console.log(obj.__proto__);
+
+//    函数也是object
+//    此处使用传统方式创建函数
+    function fn(x, y) {
+        return x + y;
+    }
+    console.log(fn(10, 20));
+//    根本不推荐，别用
+    var fn1 = new Function("x", "y", "return x + y");
+    console.log(fn1(5,6));
+
+//instanceof
+    function Foo() {
+
+    };
+    var f1 = new Foo();
+    console.log(f1 instanceof Foo);
+    console.log(f1 instanceof Object);
+</script>
+</body>
+</html>

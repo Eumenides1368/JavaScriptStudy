@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>array的使用</title>
+    <link href="bootstrap.css" rel="stylesheet">
+    <style>
+        .box{
+            margin: 20px auto;
+            width: 1000px;
+            height:auto;
+        }
+
+        .content {
+            border: 1px solid #3c3c3c;
+            background-color: #e8e8e8;
+            padding-left: 5px;
+            height: auto;
+            overflow: visible;
+        }
+
+    </style>
+</head>
+<body>
+    <h3>关于日期</h3>
+    <div class="box">
+        <p class="content" id="date">Jan,Feb,Mar,Apr,May,June,July,Aug,Sept,Oct,Nov,Dec</p>
+        <p>
+            <button class="btn btn-primary">删除Jan</button>
+            <button class="btn btn-info">删除Dec</button>
+        </p>
+    </div>
+    <div class="box">
+        <p class="content" id="num">1,2,3,4,5,6,7,8,9</p>
+        <p>
+            <button class="btn btn-success">复制</button>
+            <button class="btn btn-warning">还原</button>
+        </p>
+    </div>
+    <div class="box" >
+        <p class="content" id="color">red,green,blue,white,yellow,black</p>
+        <p>
+            <button class="btn btn-warning">还原</button>
+            <button class="btn btn-danger">删除前三项</button>
+            <button class="btn btn-primary">删除第二至三项</button>
+            <button class="btn btn-info">在第二项后插入orange,purple</button>
+            <button class="btn btn-success">替换第二项和第三项</button>
+        </p>
+    </div>
+
+<script>
+    var btns = document.getElementsByTagName("button");
+    var dates = document.getElementById("date");
+
+//    console.log(typeof arr1);
+    var flag = true;
+
+    //删除数组的第一项
+    var arr1 = dates.innerHTML.split(",");
+    btns[0].onclick = function () {
+        //shift()删除第一个元素
+        console.log(arr1);
+        flag ? (arr1.shift(), this.innerHTML = this.innerHTML.replace("删除", "还原"), flag = false) :
+            (arr1.unshift("Jan"), this.innerHTML = this.innerHTML.replace("还原","删除"), flag = true);
+        console.log("arr1" + arr1.length)
+        dates.innerHTML = arr1.join();
+    }
+
+    //删除数组的最后一项
+    btns[1].onclick = function () {
+        console.log(arr1);
+        flag ? (arr1.pop(), this.innerHTML = this.innerHTML.replace("删除", "还原"), flag = false) :
+            (arr1.push("Dec"), this.innerHTML = this.innerHTML.replace("还原", "删除"), flag = true);
+        dates.innerHTML = arr1.join();
+    }
+
+
+    var num = document.getElementById("num");
+    //复制数组
+    btns[2].onclick = function () {
+        var arr2 = num.innerHTML.split(",");
+        num.innerHTML = arr2.concat(arr2).toString().replace(/ \s/g, "");
+    }
+
+    btns[3].onclick = function () {
+        num.innerHTML = [1,2,3,4,5,6,7,8,9];
+    }
+
+    var colors = document.getElementById("color");
+    btns[4].onclick = function () {
+        colors.innerHTML = ['red','green','blue','white','yellow','black'];
+    }
+
+    var flag1 = true;
+    btns[5].onclick = function () {
+        var arr3 = colors.innerHTML.split(",");
+        console.log(arr3);
+        arr3.splice(0,3);
+        /*
+        arr3.shift();
+        arr3.shift();
+        arr3.shift();
+        */
+        colors.innerHTML = arr3.join();
+    }
+
+    btns[6].onclick = function () {
+        var arr3 = colors.innerHTML.split(",");
+        arr3.splice(1,3);
+        colors.innerHTML = arr3.join();
+    }
+    
+    btns[7].onclick = function () {
+        var arr3 = colors.innerHTML.split(",");
+        arr3.splice(1, 0, "orange", "purple");
+        colors.innerHTML = arr3.join();
+    }
+
+    btns[8].onclick = function () {
+        var arr3 = colors.innerHTML.split(",");
+        arr3.splice(1,2, "#123321", "#234432");
+        colors.innerHTML = arr3.join();
+    }
+</script>
+
+<div id="arr">-2070,-1600,-1046,-771,-476,-221,-206,25,220,280,317,420,581,618,907,960,1127,1279,1368,1644,1911</div>
+
+<script>
+    var array = document.getElementById("arr").innerHTML.split(",");
+    console.log(array);
+    console.log("原始数组长度" + array.length)
+
+    //shift
+    array.shift();
+    console.log("shift之后：" + array + "数组长度" + array.length);
+
+    //unshift
+    array.unshift("-2070");
+    console.log("unshift之后：" + array + "数组长度" + array.length);
+
+    //pop
+    array.pop();
+    console.log("pop之后:" + array + "数组长度" + array.length);
+
+    //push
+    array.push("1911");
+    console.log("push之后:" + array + "数组长度" + array.length);
+
+    //splice
+    array.splice(1, 1);
+    console.log("splice删除第二个元素之后:" + array + "数组长度" + array.length);
+    array.splice(1, 0, "-1600");
+    console.log("splice添加原第二个元素之后:" + array + "数组长度" + array.length);
+
+    //slice,参数的选取[start, end)
+    var subarr = array.slice(13, 15);
+    console.log("slice:" + subarr + "原数组长度" + array.length);
+
+</script>
+</body>
+</html>

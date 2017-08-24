@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计时</title>
+    <link href="bootstrap.css" rel="stylesheet">
+    <style>
+        #clock{
+            width: 400px;
+            height: 140px;
+            margin: 10px auto;
+            border: 2px solid black;
+            background-color: #e3e3e3;
+            text-align: center;
+        }
+
+        #time{
+            text-align: center;
+        }
+
+        #time input{
+            width: 60px;
+            margin: 10px;
+            border: 1px solid black;
+        }
+
+        button{
+            width: 100px;
+            margin: 10px;
+        }
+
+        button .cancel{
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="clock">
+        <div id="time">
+            <input type="text" id="minute">分钟
+            <input type="text" id="second">秒
+        </div>
+        <div>
+            <span>2</span>分钟
+            <span>3</span>秒
+        </div>
+        <button class="btn btn-primary">启动</button>
+    </div>
+
+<script>
+
+    var start = document.getElementsByTagName("button")[0];
+    var timer = null;
+
+    start.onclick = function () {
+        //setInterval(要执行的代码, 执行间隔)
+        start.className == "" ?  (timer = setInterval(updateTime, 1000), updateTime()) :clearInterval(timer);
+        this.className = this.className == "" ? "cancel" : "";
+//        console.log(calTime());
+    }
+
+    function updateTime() {
+        var time = document.getElementsByTagName("span");
+
+        console.log(time[0] + "," + time[1]);
+        var remain = time[0].innerHTML.replace(/ ^0/, "") * 60 + parseInt(time[1].innerHTML.replace(/ ^0/, ""));
+        if (remain <= 0){
+            clearInterval(timer);
+            return;
+        }
+        remain--;
+        time[0].innerHTML = parseInt(remain/60);
+        time[1].innerHTML = parseInt(remain%60);
+    }
+
+
+</script>
+</body>
+</html>

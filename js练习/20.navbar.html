@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>导航栏</title>
+    <style>
+        body,div,ul,li,p{
+            padding: 0;
+            margin: 0;
+        }
+
+        body{
+            font-size: 20px;
+            font-family: Kaiti SC;
+        }
+
+        ul{
+            list-style-type: none;
+        }
+
+        #nav, #nav ul, #nav ul li, #nav ul li a:hover, #nav .subnav, #nav .subnav p,
+        #nav .subnav p span, #nav .subnav .arrow{
+            background-color: goldenrod;
+        }
+
+        #nav{
+            position: relative;
+            width: 910px;
+            /*背景图像的位置，此处无用*/
+            background-position: 0 -36px;
+            margin: 10px auto;
+        }
+
+        #nav ul li{
+            float: left;
+            line-height: 36px;
+            margin-left: 10px;
+            padding-right: 10px;
+            overflow: hidden;
+            background-position: -72px;
+            border: 1px solid black;
+        }
+
+        #nav ul li a{
+            float: left;
+            width: 110px;
+            margin-left: -2px;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        #nav ul li a:hover{
+            font-size: 18px;
+            color: #f9f2f4;
+            width: 102px;
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            margin:0 2px 0 4px;
+        }
+
+        #nav .subnav{
+            display: none;
+            position: absolute;
+            top: 41px;
+            width:auto!important;
+            min-width: 110px;
+            height: 27px;
+            line-height: 27px;
+            /*文本中的内容不能换行*/
+            white-space: nowrap;
+        }
+
+        #nav .subnav p{
+            margin-left: 10px;
+            padding-right: 10px;
+        }
+
+        #nav .subnav p span{
+            display: block;
+            color: #235e99;
+        }
+
+        #nav .subnav p a{
+            font-size: 12px;
+            display: inline;
+            color: #235e99;
+            text-decoration: none;
+            margin:0 5px;
+            padding: 0 2px;
+        }
+
+        #nav .subnav p a:hover{
+            /*文本的粗细*/
+            font-weight: 400;
+            background-image: none;
+            border-bottom: 2px solid;
+        }
+
+        #nav .subnav .arrow{
+            position: absolute;
+            top: -4px;
+            display: block;
+            width: 11px;
+            height: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="nav">
+        <ul>
+            <!--a href="javascript:;javascript:void(0)地址不发生跳转，用onclick来执行js函数-->
+            <!--<li><a href="javascript:;"></a>历代帝王</li>-->
+            <li>
+                <a href="javascript:void(0)">秦</a>
+                <div class="subnav">
+                    <!--表示为强调的内容，显示为斜体字-->
+                    <em class="arrow"></em>
+                    <p>
+                        <span>
+                            <a href="javascript:;">秦孝公</a>
+                            <a href="javascript:;">秦惠文王</a>
+                            <a href="javascript:;">秦武王</a>
+                            <a href="javascript:;">秦昭襄王</a>
+                            <a href="javascript:;">秦孝文王</a>
+                            <a href="javascript:;">秦庄襄王</a>
+                            <a href="javascript:;">秦始皇</a>
+                            <a href="javascript:;">秦二世</a>
+                            <a href="javascript:;">秦王子婴</a>
+                        </span>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <a href="javascript:;">汉</a>
+                <div class="subnav">
+                    <em class="arrow"></em>
+                    <p>
+                        <span>
+                            <a href="javascript:;">汉高祖</a>
+                            <a href="javascript:;">汉惠帝</a>
+                            <a href="javascript:;">汉文帝</a>
+                            <a href="javascript:;">汉景帝</a>
+                            <a href="javascript:;">汉武帝</a>
+                            <a href="javascript:;">汉昭帝</a>
+                            <a href="javascript:;">汉废帝</a>
+                            <a href="javascript:;">汉宣帝</a>
+                            <a href="javascript:;">汉元帝</a>
+                            <a href="javascript:;">汉成帝</a>
+                            <a href="javascript:;">汉哀帝</a>
+                            <a href="javascript:;">汉平帝</a>
+                            <a href="javascript:;">孺子婴</a>
+                            <a href="javascript:;">东汉的不记得也懒得写了</a>
+                        </span>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <a href="javascript:;">隋</a>
+                <div class="subnav">
+                    <em class="arrow"></em>
+                    <p>
+                        <span>
+                            <a href="javascript:;">隋文帝</a>
+                            <a href="javascript:;">隋炀帝</a>
+                            <a href="javascript:;">隋恭帝</a>
+                        </span>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <a href="javascript:;">唐</a>
+                <div class="subnav">
+                    <em class="arrow"></em>
+                    <p>
+                        <span>
+                            <a href="javascript:;">唐高祖</a>
+                            <a href="javascript:;">唐太宗</a>
+                            <a href="javascript:;">唐高宗</a>
+                            <a href="javascript:;">唐中宗</a>
+                            <a href="javascript:;">唐睿宗</a>
+                            <a href="javascript:;">则天大圣皇帝</a>
+                            <a href="javascript:;">唐玄宗</a>
+                            <a href="javascript:;">唐肃宗</a>
+                            <a href="javascript:;">后面不记得了</a>
+                        </span>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <a href="javascript:;">宋</a>
+                <div class="subnav">
+                    <em class="arrow"></em>
+                    <p>
+                        <span>
+                            <a href="javascript:;">宋太祖</a>
+                            <a href="javascript:;">宋太宗</a>
+                            <a href="javascript:;">宋真宗</a>
+                            <a href="javascript:;">宋仁宗</a>
+                            <a href="javascript:;">宋英宗</a>
+                            <a href="javascript:;">宋英宗</a>
+                            <a href="javascript:;">宋神宗</a>
+                            <a href="javascript:;">宋哲宗</a>
+                            <a href="javascript:;">宋徽宗</a>
+                            <a href="javascript:;">宋钦宗</a>
+                        </span>
+                    </p>
+                </div>
+            </li>
+            <li>
+                <a href="javascript:;">明</a>
+                <div class="subnav">
+                    <em class="arrow"></em>
+                    <p>
+                        <span>
+                            <a href="javascript:;">明太祖</a>
+                            <a href="javascript:;">明惠帝</a>
+                            <a href="javascript:;">明成祖</a>
+                            <a href="javascript:;">明仁宗</a>
+                            <a href="javascript:;">明宣宗</a>
+                            <a href="javascript:;">明英宗</a>
+                            <a href="javascript:;">明代宗</a>
+                            <a href="javascript:;">明宪宗</a>
+                            <a href="javascript:;">明孝宗</a>
+                            <a href="javascript:;">明武宗</a>
+                            <a href="javascript:;">明世宗</a>
+                            <a href="javascript:;">明穆宗</a>
+                            <a href="javascript:;">明神宗</a>
+                            <a href="javascript:;">明光宗</a>
+                            <a href="javascript:;">明熹宗</a>
+                            <a href="javascript:;">明思宗</a>
+                        </span>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+<script>
+    <!--定义一个class-->
+    var get = {
+        byId: function(id) {
+            return document.getElementById(id);
+        },
+
+        byClass: function (sClass, oParent) {
+            var aClass = [];
+            var reClass = new RegExp("(^| )" + sClass + "(|$)");
+            var aElem = this.byTagName("*", oParent);
+            for (var i = 0; i < aElem.length; i++){
+                reClass.test(aElem[i].className) && aClass.push(aElem[i]);
+            }
+            return aClass;
+        },
+
+        byTagName: function (elem, obj) {
+            return (obj || document).getElementsByTagName(elem);
+        }
+    };
+
+    window.onload = function () {
+        var oNav = get.byId("nav");
+        console.log(oNav);
+        var aLi = get.byTagName("li", oNav);
+        console.log(aLi);
+        var aSubNav = get.byClass("subnav", document);
+        console.log(aSubNav);
+        var oSubNav = null;
+        var oEm = timer = null;
+        var i = 0;
+
+        for (i = 1; i < aLi.length; i++){
+            aLi[i].onmouseover = function () {
+//                console.log(aLi[i]);
+                for (i = 0; i < aSubNav.length; i++)
+                    aSubNav[i].style.display = "none";
+
+                oSubNav = get.byClass("subnav", this)[0];
+                console.log(oSubNav);
+
+                oEm = get.byTagName("subnav", this)[0];
+                oSubNav.style.display = "block";
+                oNav.offsetWidth - this.offsetLeft > oSubNav.offsetWidth ?
+                    oSubNav.style.left = this.offsetLeft + "px" :
+                    oSubNav.style.right = 0;
+                oEm.style.left = this.offsetLeft - oSubNav.offsetLeft + 50 + "px";
+                clearTimeout(timer);
+
+                oSubNav.onmouseover = function (event) {
+                    (event || window.event).cancelBubble = true;
+                    clearTimeout(timer);
+                }
+            };
+
+            aLi[i].onmouseout = function () {
+                timer = setTimeout(function () {
+                    oSubNav.style.display = "none";
+                }, 3000);
+            }
+        }
+    };
+</script>
+</body>
+</html>

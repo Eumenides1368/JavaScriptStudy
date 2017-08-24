@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>评分系统</title>
+    <link href="bootstrap.css" rel="stylesheet">
+    <style>
+        body{
+            margin: 20px;
+            padding: 0;
+        }
+
+        #score{
+            color: red;
+        }
+
+        #box{
+            width: 80px;
+            height: auto;
+            border: 1px solid black;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h3>点击星星打分</h3>
+    <span>
+        <img src="../image/白.png">
+        <img src="../image/白.png">
+        <img src="../image/白.png">
+        <img src="../image/白.png">
+        <img src="../image/白.png">
+    </span>
+    <span id="box">
+        <p id="attr"></p>
+        <p id="com"></p>
+    </span>
+    <p>
+        <span id="score">11</span>
+        <span id="comment">11</span>
+    </p>
+
+<script>
+    var images = document.getElementsByTagName("img");
+    var comments = ["差得离谱", "部分破损", "一般般", "满意", "灰常满意"];
+    var box = document.getElementById("box");
+    //框中评分
+    var attr = document.getElementById("attr");
+    //框中评价
+    var com = document.getElementById("com");
+    var score = document.getElementById("score");
+    var comment = document.getElementById("comment");
+
+    var index = 0;
+
+    for (var i = 0; i < images.length; i++){
+        images[i].index = i;
+
+        images[i].onmouseover = function () {
+
+            box.style.display = "block";
+            attr.innerHTML = this.index + "分";
+            com.innerHTML = comments[this.index];
+//            score.innerHTML = this.index;
+//            comment.innerHTML = "(" + comments[this.index] + ")";
+
+            for (var j = 0; j <= this.index; j++){
+                images[j].src = "../image/橙.png"
+            }
+        }
+
+        images[i].onmouseout = function () {
+            box.style.display = "none";
+            for (var j = 0; j <= this.index; j++){
+                images[j].src = "../image/白.png"
+            }
+        }
+        
+        images[i].onclick = function () {
+            box.style.display = "none";
+            score.innerHTML = this.index;
+            comment.innerHTML = "(" + comments[this.index] + ")";
+        }
+    }
+</script>
+</body>
+</html>

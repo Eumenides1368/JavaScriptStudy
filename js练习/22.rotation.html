@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>轮播插件</title>
+    <style>
+        body div ul li img {
+            padding: 0;
+            margin: 0;
+        }
+
+        body{
+            text-align: center;
+        }
+
+        ul{
+            list-style:none;
+        }
+        #box{
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 0px auto;
+            background: orange;
+            border: 10px solid orangered;
+            border-radius: 10px;
+        }
+
+
+        #image{
+            position: relative;
+            width: 300px;
+            height: 300px;
+            overflow: hidden;
+            /*border: 10px solid blanchedalmond;*/
+        }
+
+        #image li{
+            position: absolute;
+            top: -30px;
+            left: 0px;
+            width: 300px;
+            height: 300px;
+            /*透明啊*/
+            opacity: 0;
+            filter: alpha(opacity=0);
+        }
+
+        #image li.current{
+            opacity: 1;
+            filter: alpha(opacity=1);
+        }
+
+        #no{
+            position: absolute;
+            bottom: 5px;
+            right:0;
+        }
+
+        #no li{
+            color: coral;
+            float: left;
+            width: 15px;
+            height: 15px;
+            coursor:pointer;
+            margin-right: 50px;
+            overflow: hidden;
+            background-color: antiquewhite ;
+            opacity: 0.6;
+            filter: alpha(opacity=60);
+            border-radius: 15px;
+            font-size: 10px;
+        }
+
+        #no li.current{
+            color: lightsteelblue;
+            opacity: 1;
+            filter:alpha(opacity=100);
+            font-weight: 700;
+            background-color: darksalmon;
+        }
+
+        #tmp{
+            width:100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+
+        img{
+            width:300px;
+            height:300px;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <ul id="image">
+        <li class="current"><img src="../image/momo5.jpg"></li>
+        <li><img src="../image/momo6.jpg"></li>
+        <li><img src="../image/momo7.jpg"></li>
+        <li><img src="../image/momo8.jpg"></li>
+    </ul>
+    <ul id="no">
+        <li class="current">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+</div>
+
+<script>
+    window.onload = function () {
+        var box = document.getElementById("box");
+        var uls = document.getElementsByTagName("ul");
+        var images = uls[0].getElementsByTagName("li");
+        var tags = uls[1].getElementsByTagName("li");
+        var timer = null;
+        var play = null;
+        var index = 0;
+
+//        console.log(images.length);
+
+        for (var i = 0; i < tags.length; i++){
+            tags[i].index = i;
+            tags[i].onmouseover = function () {
+                show(this.index);
+            }
+        }
+
+        //鼠标划过关闭定时器
+        box.onmouseover = function () {
+            clearInterval(play);
+        }
+
+        box.onmouseout = function () {
+            autoPlay();
+        }
+        
+        function autoPlay() {
+            play = setInterval(function () {
+                index++;
+                index >= images.length && (index = 0);
+                show(index);
+            }, 2000);
+        }
+
+        autoPlay();
+
+        function show(a) {
+            index = a;
+            var alpha = 0;
+            for (var i = 0; i < tags.length; i++)
+                tags[i].className = "";
+            tags[index].className = "current";
+            clearInterval(timer);
+
+            for (var i = 0; i < images.length; i++){
+                images[i].style.opacity = 0;
+                images[i].style.filter = "alpha(opacity:0)";
+            }
+
+            timer = setInterval(function () {
+                alpha += 2;
+                alpha > 100 && (alpha = 100);
+                images[index].style.opacity = alpha /100;
+                images[index].style.filter = "alpha(opacity = " + alpha + ")";
+                alpha == 100 && clearInterval(timer);
+            })
+        }
+    }
+</script>
+</body>
+</html>

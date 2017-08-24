@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>传递参数</title>
+    <link href="bootstrap.css" rel="stylesheet">
+    <style>
+        body{
+            padding: 0;
+            /*margin:30px auto;*/
+            text-align: center;
+        }
+
+        .sub{
+            margin: 10px auto 0px auto;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="city" class="sub"><br>
+    <input type="text" id="area" class="sub"><br>
+    <button class="btn btn-primary sub">提交</button>
+
+<script>
+    var sub = document.getElementsByTagName("button")[0];
+    console.log(sub);
+    sub.onclick = function () {
+        var city = document.getElementById("city").value;
+        var area = document.getElementById("area").value;
+        console.log(city);
+        console.log(area);
+//        alert(city);
+//        alert(area);
+    }
+</script>
+</body>
+</html>

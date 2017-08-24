@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文档写入</title>
+</head>
+<body>
+    <p>现在是北京时间:</p>
+    <div id="myDiv" class="bd" title="body test" lang="en" dir="ltr"></div>
+    <script>
+        document.write("<strong>" + (new Date()).toString() + "</strong>");
+//        document.write("<script type='text/javascript' src='8.1_bom.html'>" +
+//            "<\/script>");
+
+        var div = document.getElementById("myDiv");
+        console.log(div.id);
+        console.log(div.className);
+        console.log(div.title);
+        console.log(div.lang);
+
+        div.id = "other";
+        div.className = "ft";
+        div.title = "other text";
+
+        console.log(div.getAttribute("id"));
+
+        function outputAttr(element) {
+            var pairs = new Array(),
+                attrName,
+                attrValue,
+                i,
+                len;
+            for (i = 0, len = element.attributes.length; i < len; i++){
+                attrName = element.attributes[i].nodeName;
+                attrValue = element.attribute[i].nodeValue;
+                if (element.attribute[i].specified)
+                    pairs.push(attrName + "=\"" + attrValue + "\"");
+            }
+            return pairs.join(" ");
+        }
+
+//        var div = document.createElement("div");
+//        div.id = "myNewDiv";
+//        div.className = "box";
+        document.body.appendChild(div);
+    </script>
+</body>
+</html>

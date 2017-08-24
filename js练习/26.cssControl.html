@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css控制</title>
+    <style>
+        body{
+            text-align:center;
+        }
+        #box{
+            width: 200px;
+            height:160px;
+            background-color: orange;
+            border: 3px solid orangered;
+            border-radius: 3px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<input type="button" value="显示style">
+<input type="button" value="设置style">
+
+<script>
+
+    function css(obj, attr, value) {
+        switch(arguments.length){
+            case 2:{
+                if (typeof arguments[1] == "object")
+                    for (var i in attr)
+                        obj.style[i] = attr[i];
+                else
+                    return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj, null)[attr];
+                break;
+            }
+            case 3:{
+                obj.style[attr] = value;
+                break;
+            }
+
+            default:
+                alert("参数错误！")
+        }
+    }
+
+    var btn1 = document.getElementsByTagName("input")[0];
+    var btn2 = document.getElementsByTagName("input")[1];
+
+    var box = document.getElementById("box");
+    btn1.onclick = function () {
+        console.log("width:" + css(box, "width"));
+    }
+
+    btn2.onclick = function () {
+        css(box, {backgroundColor: "red"});
+    }
+</script>
+</body>
+</html>

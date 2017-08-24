@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算数组的和</title>
+    <link href="bootstrap.css" rel="stylesheet">
+    <style>
+        body{
+            padding: 20px;
+            text-align: center;
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+<p>输入数组，之间用;分割</p>
+<input type="text" id="arr">
+<button class="btn btn-primary">计算</button>
+
+<script>
+    var cal = document.getElementsByTagName("button")[0];
+    cal.onclick = function () {
+        var nums = document.getElementById("arr").value;
+        var arr = nums.split(";");
+        var sum = 0;
+        console.log(nums);
+        for (var i = 0, len = arr.length; i < len; i++){
+            sum += Number(arr[i]);
+        }
+        alert(sum);
+    }
+</script>
+</body>
+</html>

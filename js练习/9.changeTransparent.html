@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>改变透明度</title>
+    <style>
+        body{
+            padding: 20px;
+        }
+        .box{
+            margin: 0 auto;
+            width: 868px;
+            height: 220px;
+            padding: 10px;
+            border: 1px solid grey;
+        }
+
+        .box img{
+            width: 200px;
+            height: 200px;
+            border: 1px solid #222222;
+            margin: 5px 5px;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <div class="box">
+        <img src="../image/momo1.jpg">
+        <img src="../image/momo2.jpg">
+        <img src="../image/momo3.jpg">
+        <img src="../image/momo4.jpg">
+    </div>
+    <div class="box">
+        <img src="../image/momo5.jpg">
+        <img src="../image/momo6.jpg">
+        <img src="../image/momo7.jpg">
+        <img src="../image/momo8.jpg">
+    </div>
+</div>
+
+<script>
+    window.onload = function () {
+        var images = document.getElementsByTagName("img");
+        for (var i = 0, len = images.length; i < len; i++){
+            images[i].onmouseover = function () {
+                this.style.opacity = 1;
+            }
+            images[i].onmouseout = function () {
+                this.style.opacity = 0.5;
+            }
+        }
+    }
+</script>
+</body>
+</html>

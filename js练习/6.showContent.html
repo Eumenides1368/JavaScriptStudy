@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>显示内容</title>
+    <link href="bootstrap.css" rel="stylesheet">
+    <style>
+        body{
+            padding: 30px;
+        }
+        .content{
+            width: 500px;
+            margin: 20px auto;
+            border: 2px solid #777777;
+        }
+    </style>
+</head>
+<body>
+<div class="content">
+    2017年7月30日，庆祝中国人民解放军建军90周年阅兵在朱日和联合训练基地隆重举行，中共中央总书记、国家主席、
+    中央军委主席习近平检阅部队并发表重要讲话。记者 周朝荣 摄
+</div>
+<div class="content">
+    在世界各地的港口和海峡，悬挂着五星红旗的货轮川流不息——中国人正以从未有过的开放姿态拥抱世界；
+    视线拉回到中国周边，外国军事基地密密麻麻，犹如一条条“捆龙绳”——一些国家从未放弃过遏制中国的念头。
+    习主席在庆祝建军90周年大会讲话中指出：“安不可以忘危，治不可以忘乱。”显然，中国正在前所未有地靠近世界舞台的中心，也前所未有地面临严峻的安全压力和风险挑战。
+</div>
+<div class="content">
+    “我想的最多的就是，在党和人民需要的时候，我们这支军队能不能始终坚持住党的绝对领导，能不能拉得上去、打胜仗，各级指挥员能不能带兵打仗、指挥打仗？”这一“胜战之问”，萦绕在三军统帅的心头，叩问着三军将士。
+    “提高军队打胜仗能力”，这是习主席从实现中国梦强军梦战略高度深深思考的课题，也是全军将士履行使命任务必须答好的考题。
+</div>
+
+<script>
+    var cont = document.getElementsByClassName("content");
+    for (var i = 0, len = cont.length; i < len; i++){
+        console.log(cont[i]);
+        console.log("111111");
+        cont[i].onclick = function () {
+//              善于利用this
+            var news = this.innerHTML;
+            console.log(news);
+            alert(news);
+        }
+    }
+</script>
+</body>
+</html>

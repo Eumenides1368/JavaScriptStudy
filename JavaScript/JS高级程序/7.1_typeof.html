@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用typeof</title>
+</head>
+<body>
+ <script>
+     function show(x) {
+         console.log(typeof x);
+         console.log(typeof 10);
+         console.log(typeof "abc");
+         console.log(typeof true);
+
+         console.log(typeof function () {
+         });
+         console.log(typeof [1, 'a', true]);
+         console.log(typeof {a: 10, b: 20});
+         console.log(typeof null);
+         console.log(typeof new Number(10));
+     }
+     show();
+ </script>
+</body>
+</html>

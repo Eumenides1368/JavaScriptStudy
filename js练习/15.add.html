@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>加法</title>
+    <link href="bootstrap.css" rel="stylesheet">
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+        }
+        
+        form{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<form>
+    <input type="text" class="number" id="num1"/>
+    <span>+</span>
+    <input type="text" class="number" id="num2"/>
+    <span>&nbsp;&nbsp;=&nbsp;&nbsp;</span>
+    <span id="add">?</span>
+    <button class="btn btn-primary">求和</button>
+</form>
+
+<script>
+    window.onload = function () {
+        var btn = document.getElementsByTagName("button")[0];
+        console.log(btn);
+        btn.onclick = function () {
+            var num1 = document.getElementById("num1").value;
+            var num2 = document.getElementById("num2").value;
+            var add = document.getElementById("add");
+            var all = parseInt(num1) + parseInt(num2);
+            alert(all);
+            console.log(all);
+            add.innerHTML = all;
+        }
+    }
+
+</script>
+</body>
+</html>

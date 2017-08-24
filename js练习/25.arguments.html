@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>arguments</title>
+</head>
+<body>
+
+<script>
+    Array.prototype.testArg = "test";
+    function funcArg() {
+        console.log(arguments.testArg);
+        console.log(arguments[0]);
+    }
+
+    console.log(new Array().testArg);
+    funcArg(10);
+
+    console.log("------------");
+
+    function f(a, b, c) {
+        console.log(arguments.length);
+        console.log(arguments)
+        a = 100;
+        console.log(arguments[0]);
+        arguments[0] = 'cwlcjgd';
+        console.log(arguments[0]);
+        console.log(c);
+        c = 2017;
+        console.log(arguments[2]);
+        console.log(arguments[1]);
+    }
+
+    f(1, 2);
+
+    function count(a) {
+        if (a == 1)
+            return 1;
+        //递归调用，代替函数名本身（10+1）* 10／2
+        return a + arguments.callee(--a);
+    }
+
+    var res = count(10);
+    console.log(res);
+
+
+    function sum() {
+        var all = 0;
+        for (var i = 0; i < arguments.length; i++)
+            all += arguments[i];
+        return all;
+    }
+    console.log(sum(1,2,3,4,5,6,7,8,9,10));
+</script>
+</body>
+</html>

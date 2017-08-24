@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bom</title>
+    <link rel="stylesheet" href="bootstrap.css"/>
+    <style>
+        body{
+            padding:50px;
+        }
+    </style>
+</head>
+<body>
+<button class="btn btn-primary" type="button" value="closedTime">清除计时</button><br/><br/>
+<button class="btn btn-default" value="倒计时开始" id="countdown" disabled>倒计时开始</button>
+<script>
+    var btn = document.getElementById("btn");
+    var timeID = setTimeout(function () {
+        alert("233333");
+    }, 2000);
+    btn.onclick = function () {
+        clearTimeout(timeID);
+    }
+
+//    倒计时
+    var countdown = document.getElementById("countdown");
+    var num = 10;
+    var timeID = setInterval(function () {
+        num--;
+        countdown.value = "倒计时开始" + num;
+        if(num == 0){
+            clearInterval(timeID);
+            countdown.disabled = false;
+            countdown.value = "点火🔥！发射！";
+        }
+    }, 1000);
+</script>
+</body>
+</html>

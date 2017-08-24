@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>setTimeOut练习</title>
+    <link href="bootstrap.css" rel="stylesheet">
+</head>
+<body>
+<p>等等！</p>
+<form name = "tab">
+    <input type="text" id="add" value="0">
+    <p>你在该网页中停留的时间是
+        <span id="min">0</span>分
+        <span id="sec">0</span>秒
+    </p>
+</form>
+
+
+
+<script>
+//    setTimeout("alert('hello world!')", 2000);
+//    执行function
+var x = 0;
+    function countSec() {
+        x = x + 1;
+        document.getElementById("add").value = x;
+//        console.log(x);
+        setTimeout("countSec()", 1000);
+    }
+//    countSec();
+
+//    计算在某一个页面停留的时间
+    var t = 0;
+    function countTime() {
+        t = t + 1;
+        var min = parseInt(t / 60);
+        var sec = t % 60;
+        console.log("t " + t);
+        console.log("min " + min);
+        console.log("sec " + sec);
+        document.getElementById("min").innerHTML = min;
+        document.getElementById("sec").innerHTML = sec;
+        setTimeout("countTime()", 1000);
+    }
+//    countTime();
+
+//    clearTimeout
+    var stopBtn = document.getElementById("stop");
+    console.log(stopBtn);
+    var contBtn = document.getElementById("cont");
+    console.log(contBtn);
+    var x = 0, y = 0;
+    var timer1 = timer2 = null;
+    /*
+    contBtn.onclick = function count () {
+        x = x + 1;
+        document.getElementById("box1").value = x;
+        timer1 = setTimeout(function () { count() }, 1000);
+        console.log("此时的时间是:" + x);
+        console.log("timer1:" + timer1);
+    }
+
+    stopBtn.onclick = function (timer1) {
+        clearTimeout(timer1);
+    }
+    */
+    function count() {
+        x = x + 1;
+        document.getElementById("box").value = x;
+        timer1 = setTimeout("count()", 1000);
+    }
+
+</script>
+
+<form>
+    <h5>计时</h5>
+    <input type="text" id="box" value="0" size="4">
+    <button class="btn btn-primary" id="stop" onclick="clearTimeout(timer1)">停止计时</button>
+    <button class="btn btn-success" id="cont" onclick="count()">继续计时</button>
+</form>
+
+<script>
+    count();
+</script>
+</body>
+</html>

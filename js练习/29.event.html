@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件</title>
+    <link href="bootstrap.css" rel="stylesheet">
+    <style>
+        body{
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<p><button class="btn btn-success">并没有什么用</button></p>
+<p><button class="btn btn-info">绑定click</button></p>
+<p><button class="btn btn-warning">解除绑定</button></p>
+<script>
+    var EventUtil = {
+        addHandler: function (elem, event, handler) {
+            elem.addEventListener ? elem.addEventListener(event, handler, false) :
+                elem.attachEvent("on" + event, handler);
+        },
+
+        removeHandler: function (elem, event, handler) {
+            elem.removeEventListener ? elem.removeEventListener(event, handler, false) :
+                elem.detachEvent("on" + event, handler);
+        },
+
+        addLoadHandler: function (handler) {
+            this.addHandler(window, "load", handler);
+        }
+    };
+
+    EventUtil.addLoadHandler(function () {
+        var btns = document.getElementsByTagName("button");
+        console.log(btns);
+
+        //第一个按钮
+        EventUtil.addHandler(btns[1], "click", function () {
+            EventUtil.addHandler(btns[0], "click", handler);
+            btns[0].innerHTML = "可以点击了";
+        });
+
+        EventUtil.addHandler(btns[2], "click", function () {
+            EventUtil.removeHandler(btns[0], "click", handler);
+            btns[0].innerHTML = "并没有什么用";
+        });
+
+        function handler() {
+            alert("事件绑定成功！");
+        }
+
+    });
+</script>
+</body>
+</html>

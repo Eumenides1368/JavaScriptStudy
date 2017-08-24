@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>变成红色</title>
+    <link href="bootstrap.css" rel="stylesheet">
+    <style>
+        body{
+            padding: 0px;
+            text-align: center;
+        }
+
+        #many{
+            width: 900px;
+            height: 200px;
+            margin: 20px auto;
+            /*border: 1px solid #122b40;*/
+        }
+
+        .box{
+            width: 297px;
+            height: 200px;
+            border:1px solid #777777;
+            margin-left: 2px;: ;
+            float: left;
+            background-color: gainsboro;
+        }
+    </style>
+</head>
+<body>
+    <div id="many">
+        <div class="box" id="one"></div>
+        <div class="box" id="two"></div>
+        <div class="box" id="three"></div>
+    </div>
+    <button class="btn btn-primary" id="change">变成红色</button>
+
+<script>
+    var button = document.getElementById("change");
+    button.onclick = function () {
+        var boxes = document.getElementsByClassName("box");
+        for (var i = 0, len = boxes.length; i < len; i ++){
+            boxes[i].style.backgroundColor = "red";
+        }
+    }
+</script>
+</body>
+</html>

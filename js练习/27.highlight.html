@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>强调</title>
+    <style>
+        body, form, p, label, input{
+            margin: 0;
+            padding: 0;
+        }
+
+        form{
+            width: 400px;
+            background-color: orange;
+            border:2px solid orangered;
+            padding-bottom: 10px;
+            overflow: hidden;
+            /*ie*/
+            zoom: 1;
+            margin: 10px auto;
+        }
+
+        form h2{
+            border-bottom: 2px solid orangered;
+            margin-top: 10px;
+        }
+
+        form p{
+            float: left;
+            clear: both;
+            width: 100%;
+            height: 30px;
+            margin-top: 10px;
+            line-height: 30px;
+            margin-left: 10px;
+        }
+
+        form label, form input{
+            float: left;
+        }
+
+        form label{
+            width: 70px;
+            text-align: right;
+            height: 30px;
+        }
+
+        form .mytxt {
+            width: 140px;
+            height: 30px;
+            line-height: 30px;
+            margin-left: 10px;
+        }
+
+        form .newtxt {
+            width: 140px;
+            height: 30px;
+            line-height: 30px;
+            margin-left: 10px;
+            background-color: #f5e79e;
+        }
+
+        #btn{
+            color: orangered;
+            width: 104px;
+            height: 30px;
+            cursor: pointer;
+            font-size: 20px;
+            background: #f9f9f9;
+            line-height: 30px;
+            border-radius: 5px;
+            margin-left: 40px;
+            margin-top: 7px;
+        }
+
+    </style>
+</head>
+<body>
+<form>
+    <h2>用户登录</h2>
+    <p><label>用户名:</label><input type="text" class="mytxt"></p>
+    <p><label>密码：</label><input type="text" class="newtxt"></p>
+    <p><label></label><input type="button" id="btn" value="登录"></p>
+</form>
+
+<script>
+    window.onload = function () {
+        var inputs = document.getElementsByTagName("input");
+        for (var i = 0; i < inputs.length - 1; i++){
+            inputs[i].onfocus = function () {
+                this.className = "newtxt";
+            }
+
+            inputs[i].onblur = function () {
+                this.className = "mytxt";
+            }
+        }
+    }
+</script>
+</body>
+</html>

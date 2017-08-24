@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>累加</title>
+    <link href="bootstrap.css" rel="stylesheet">
+</head>
+<body>
+    <button class="btn btn-default">0</button>
+<script>
+    var btn = document.getElementsByTagName("button")[0];
+    btn.onclick = function () {
+        var num = btn.innerHTML;
+        alert(num);
+        console.log(num);
+        num = parseInt(num) + 1;
+        btn.innerHTML = num;
+    }
+</script>
+</body>
+</html>

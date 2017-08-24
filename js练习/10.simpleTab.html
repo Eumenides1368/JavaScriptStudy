@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简易选项卡</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #tab{
+            width: 600px;
+            height: auto;
+            border: 2px solid black;
+            margin: 10px auto;
+        }
+
+        #nav{
+            overflow: hidden;
+            zoom: 1;
+            border-bottom:1px solid black;
+            /*height: 30px;*/
+        }
+
+        #nav ul{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        #nav li{
+            float: left;
+            /*list-style-type: none;*/
+            padding: 0 10px;
+            /*border: 1px solid black;*/
+            /*鼠标的样式：等待？正常？。。。*/
+            cursor: pointer;
+            line-height: 30px;
+            height:30px;
+        }
+
+        .over{
+            background-color: darkgray;
+        }
+
+        .move{
+            background-color: white;
+        }
+
+        #content ul{
+            list-style: none;
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="tab">
+        <div id="nav">
+            <ul>
+                <li class="over">如梦令</li>
+                <li class="move">醉花阴</li>
+                <li class="move">声声慢</li>
+            </ul>
+        </div>
+        <div id="content">
+            <ul style="display: block">
+                <li>常记溪亭日暮</li>
+                <li>沉醉不知归路</li>
+                <li>兴尽晚回舟</li>
+                <li>误入藕花深处</li>
+                <li>争渡争渡</li>
+                <li>惊起一滩鸥鹭</li>
+            </ul>
+            <ul>
+                <li>薄雾浓云愁永昼</li>
+                <li>瑞脑消金兽</li>
+                <li>佳节又重阳</li>
+                <li>玉枕纱橱</li>
+                <li>半夜凉初透</li>
+                <li>东篱把酒黄昏后</li>
+                <li>有暗香盈袖</li>
+                <li>莫道不消魂</li>
+                <li>连卷西风</li>
+                <li>人似黄花瘦</li>
+            </ul>
+            <ul>
+                <li>寻寻觅觅</li>
+                <li>冷冷清清</li>
+                <li>凄凄惨惨戚戚</li>
+                <li>咋暖还寒时候</li>
+                <li>最难将息</li>
+                <li>三杯两盏淡酒</li>
+                <li>怎敌他</li>
+                <li>晚来风急</li>
+                <li>雁过也</li>
+                <li>正伤心</li>
+                <li>却是旧时相识</li>
+                <li>满地黄花堆积</li>
+                <li>憔悴损</li>
+                <li>如今有谁堪摘</li>
+                <li>守着窗儿</li>
+                <li>独自怎生得黑</li>
+                <li>梧桐更兼细雨</li>
+                <li>到黄昏</li>
+                <li>点点滴滴</li>
+                <li>这次第</li>
+                <li>怎一个愁字了得</li>
+            </ul>
+        </div>
+    </div>
+
+<script>
+    window.onload = function () {
+        var titles = document.getElementById("nav").getElementsByTagName("li");
+        var poems = document.getElementById("content").getElementsByTagName("ul");
+
+        for (var i = 0, len = titles.length; i < len; i++){
+            titles[i].index = i;
+            titles[i].onmousemove = function () {
+                for (var j = 0; j < titles.length; j++)
+                    titles[j].className = "";
+                this.className = "over";
+                for (var k = 0; k < poems.length; k++)
+                    poems[k].style.display = "none";
+                poems[this.index].style.display = "block";
+
+            }
+        }
+    }
+</script>
+</body>
+</html>

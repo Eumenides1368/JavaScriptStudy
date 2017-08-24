@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>select控件</title>
+    <style>
+        body, div, ul, li{
+            margin:0;
+            padding: 0;
+        }
+
+        #search{
+            width: 200px;
+            height: auto;
+            margin: 0 auto;
+            text-align: center;
+            /*border: 1px solid black;*/
+        }
+
+        #select{
+            width: 150px;
+            /*border: 1px solid orangered;*/
+        }
+        
+        #choice{
+            display: block;
+        }
+
+        a{
+            width: 40px;
+            height: auto;
+
+        }
+
+        li{
+            list-style: none;
+            width: 150px;
+            height:auto;
+            border: 1px solid orangered;
+        }
+
+    </style>
+</head>
+<body>
+<div id="search">
+    <div id="box">
+        <span id="select">请选择书籍名称</span>
+        <input type="button" value="搜索">
+    </div>
+    <ul id="choice">
+        <li>古董局中局</li>
+        <li>风起陇西</li>
+        <li>三国机密</li>
+        <li>长安十二时辰</li>
+        <li>殷商玛雅征服史</li>
+    </ul>
+</div>
+
+<div id="keyboard"></div>
+<script>
+    window.onload = function () {
+       var select = document.getElementById("select");
+       var choice = document.getElementById("choice");
+       select.onclick = function () {
+           var state = choice.style.display;
+           (state == "block") ? (choice.style.display = "none") : (choice.style.display = "block");
+           (event || window.event).cancelBubble = true;
+       }
+    }
+
+    window.onclick = function (event) {
+        var event = event || window.event;
+        alert("[" + event.clientX + "," + event.clientY + "]");
+    }
+</script>
+
+<script>
+    window.onload = function () {
+        var key = document.getElementById("keyboard");
+        document.onkeydown = function (event) {
+            var event = event || window.event;
+            key.innerHTML = event.keyCode;
+            return false;
+        }
+    }
+
+
+</script>
+
+</body>
+</html>

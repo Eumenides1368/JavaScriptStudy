@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dom</title>
+    <link href="bootstrap.css" rel="stylesheet">
+    <style>
+        body{
+            padding: 50px;
+        }
+    </style>
+</head>
+<body>
+<div class="user-panel main">
+    <input name="login" />
+</div>
+<div id="foo\bar">哈哈哈哈哈哈哈</div>
+<div id="addClass" class="my hello world hello">什么都没有</div>
+<ul>
+    <li id="orange">橘子</li>
+    <li id="orange2">橙子</li>
+    <li>柚子</li>
+</ul>
+<div>此处专为$函数所用</div>
+<div id="adom">这个就是adom了</div>
+<a href="https://www.bilibili.com/index.html"></a>
+<div class=".classa">class为classa的存在</div>
+<div data-log="2016">属性是data-log</div>
+<div data-log="2015">属性是2015</div>
+
+<ul id="list">
+    <li id="item1">A同学</li>
+    <li id="item2">B同学</li>
+    <li id="item3">C同学</li>
+</ul>
+<button class="btn btn-info" id="mybtn"></button>
+
+<script>
+    var el = document.querySelector("div.user-panel.main input[name=login]");
+    console.log(el);
+    console.log("#foo\bar");
+//    console.log(document.querySelector("#foo\bar")) ;
+    console.log("foo\\bar");
+    console.log(document.querySelector("#foo\\bar"));
+    console.log("foo\\\\bar");
+    var a = document.querySelector("#foo\\\\bar");
+    console.log(a);
+    document.querySelector("#foo\\:bar");
+
+    // 添加一个新样式
+    function containsClass(element, newClassName) {
+        var myClassNames = element.className;
+        if (myClassNames == null)
+            return false;
+        myClassNames.split(" ");
+        for (var i = 0, len = myClassNames.length; i < len; i++){
+            console.log("哈哈" + myClassNames[i]);
+            if (myClassNames[i] == newClassName)
+                return true;
+        }
+        return false;
+    }
+    function addClass(element,newClassName) {
+        if (!containsClass(element, newClassName))
+            element.className += " " + newClassName;
+    }
+
+    var elem = document.getElementById("addClass");
+    addClass(elem, "miao");
+    console.log(elem.className);
+
+    // 删除这个样式
+    function removeClass(element, oldClassName) {
+        var myClassNames = element.className;
+        console.log("有类名" + myClassNames);
+        console.log("类型是：" + typeof myClassNames);
+        var arr = myClassNames.split(" ");
+        console.log("分割后：" + arr);
+        console.log("新的类型是:" + typeof arr);
+        for (var i = 0, len = arr.length; i < len; i++){
+            console.log("元素为:" + arr[i]);
+            if (arr[i] == oldClassName) {
+                arr.removeByValue(oldClassName);
+                console.log("1111111");
+            }
+        }
+        var res = arr.toString();
+        console.log("delete之后：" + res);
+        return arr;
+//            element.className = element.className.replace(oldClassName, "");
+    }
+    
+    Array.prototype.removeByValue = function (val) {
+        for (var i = 0, len = this.length; i < len; i++){
+            if (val == this[i]){
+                //删除第几位的元素，删几个
+                this.splice(i,1);
+                break;
+            }
+        }
+    }
+    var result = removeClass(elem, "hello");
+    console.log("移除后:" + result);
+    var array = [1,2,3,4];
+    console.log(typeof array);
+
+    //判断是否是同一个父元素下的同一级的元素
+    function isSiblingNode(element, sibling) {
+        var parent = element.parentNode;
+        var children = parent.childNodes;
+        for (var i = 0, len = children.length; i < len; i++){
+            if (sibling == children[i]){
+                return true;
+                break;
+            }
+        }
+        return false;
+    }
+
+    var ele1 = document.getElementById("orange");
+    var ele2 = document.getElementById("orange2");
+    var ele3 = document.getElementById("addClass");
+    console.log("是否为兄弟节点：" + isSiblingNode(ele1, ele2));
+    
+    //获取当前对象相对于浏览器的位置
+    function getPosition(element) {
+        if (document.documentElement.getBoundingClientRect()){
+            console.log("top:" + element.getBoundingClientRect().left);
+            console.log("left:" + element.getBoundingClientRect().top);
+            console.log("right:" + element.getBoundingClientRect().right);
+            console.log("bottom:" + element.getBoundingClientRect().bottom);
+        }
+    }
+
+    getPosition(ele3);
+
+    //query
+    function $(selector) {
+        //如果说输入有一长串的话
+        var content = selector.replace("/\s+/"," ");
+        console.log("所有内容是：" + content);
+        var arr = content.split(" ");
+        console.log("arr的类型是：" + typeof arr);
+        var result;
+
+        for (var i = 0, len = arr.length; i < len; i++){
+            console.log("arr的元素有：" + arr[i]);
+            var first = arr[i].charAt(0);
+            console.log("第一个字符是：" + first);
+            var finalRes;
+            switch (first){
+                case "#":{
+                    var id = removeFirstChar(arr[i]);
+                    console.log(id);
+                    result = document.getElementById(id);
+                    break;
+                }
+                case ".":{
+                    var myclass = removeFirstChar(arr[i]);
+                    console.log("myclass:" + myclass);
+                    console.log("此时的class是：" + myclass);
+                    var result = [];
+                    var reg = new RegExp("\\b" + myclass + "\\b", "i");
+                    var elem = document.getElementsByTagName("*");
+                    for (var i = 0, leng = elem.length; i < leng; i++){
+                        if (reg.test(elem[i].className))
+                            result.push(elem[i]);
+                    }
+                    console.log(result);
+                    break;
+                }
+                case "[":{
+                    var eq = arr[i].indexOf("=");
+                    var temp = document.getElementsByTagName("*");
+                    var tlen = temp.length;
+                    if (eq != -1){
+                        var key = arr[i].substring(0, eq);
+                        var value = arr[i].substring(eq+1, arr[i].length-1);
+                        for (var j = 0; j < tlen; j++){
+                            if (temp[j].getAttribute("key") == value){
+                                result = temp[j];
+                                break;
+                            }
+                        }
+                    }else {
+                        var key = arr[i].substring(0, arr[i].length-1);
+                        for (var j = 0; j < tlen; j++){
+                            result = temp[j];
+                            break;
+                        }
+                    }
+                    break;
+                }
+                default :
+                    result = document.getElementsByTagName(selector);
+            }
+//            finalRes += result;
+        }
+
+        console.log(result);
+    }
+
+    function removeFirstChar(str) {
+        return str.substring(1, str.length);
+    }
+
+    $("a");
+
+    //绑定事件响应
+    function addEvent(element, event, listener) {
+        if (element.addEventListener)
+            addEventListener(event, listener, false);
+        else if (element.attachEvent)
+            attachEvent("on" + event, listener);
+    }
+
+    //移除事件响应
+    function removeEvent(element, event,listener) {
+        if (element.removeEventListener)
+            removeEventListener(event, listener);
+        else
+            detachEvent("on" + event, listener);
+    }
+
+    //click事件的绑定
+    function addClickEvent(element, listener) {
+        addEvent(element, "click", listener);
+    }
+
+    //Enter事件的绑定
+    function addEnterEvent(element, listener) {
+        addEvent(element, "keydown", function (event) {
+            if (event.keyCode == 13)
+                listener.call(element);
+        })
+    }
+
+    //list
+    function clickListener(event) {
+        console.log(event);
+    }
+
+    function renerList() {
+        document.querySelector("#list").innerHTML = "<li>new item</li>";
+    }
+
+    function init() {
+        each(document.querySelector("#list").getElementsByTagName("li"), function (item) {
+            addClickEvent(item, clickListener);
+        });
+        addEvent(addClickEvent(document.querySelector("#btn")), renerList);
+    }
+    init();
+</script>
+</body>
+</html>

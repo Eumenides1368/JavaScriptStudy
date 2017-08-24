@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>控制div属性</title>
+    <link href="bootstrap.css" rel="stylesheet">
+    <style>
+        #control{
+            width: 500px;
+            margin:0 auto;
+            padding:0;
+            text-align: center;
+        }
+
+        #tangle{
+            width: 200px;
+            height: 200px;
+            background:aqua;
+            margin:10px auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div id="control">
+    <button class="btn btn-default">变宽</button>
+    <button class="btn btn-primary">变高</button>
+    <button class="btn btn-info">变色</button>
+    <button class="btn btn-success">隐藏</button>
+    <button class="btn btn-warning">重置</button>
+    <div id="tangle"></div>
+</div>
+
+<script>
+    var change = function (element, attr, value) {
+        element.style[attr] = value;
+    }
+    
+    function mychange() {
+        var btns = document.getElementsByTagName("button");
+        var attrs = ["width", "height", "background", "display", "display"];
+        var values = ["300px", "300px", "red", "none", "block"];
+        var area = document.getElementById("tangle");
+
+        for (var i = 0, len = btns.length; i < len; i++){
+//            console.log(btns[i]);
+            btns[i].index = i;
+            btns[i].onclick = function () {
+                console.log(this.index);
+                change(area, attrs[this.index], values[this.index]);
+            }
+        }
+    };
+    var area = document.getElementById("tangle");
+//    change(area, "width","300px");
+    mychange();
+</script>
+</body>
+</html>

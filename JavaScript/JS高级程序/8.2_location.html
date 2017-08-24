@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>location</title>
+</head>
+<body>
+<script>
+    function getQuery() {
+        //获得查询字符
+        var qs = (location.search.length > 0 ? location.search.substring(1) : "");
+        //保存数据的对象
+        var args = {};
+        //取得每一项
+        var items = qs.length ? qs.split("&") : [];
+        var item = null;
+        var name = null;
+        var value = null;
+
+        var i = 0;
+        var len = items.length;
+        for(i = 0; i < len; i++){
+            item = items[i].split("=");
+            name = decodeURIComponent(items[0]);
+            value = decodeURIComponent(items[1]);
+
+            if (name.length)
+                args[name] = value;
+        }
+        return args;
+    }
+
+    var args = getQuery();
+    console.log(["q"]);
+</script>
+</body>
+</html>

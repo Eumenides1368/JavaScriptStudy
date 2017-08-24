@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>复选框的使用</title>
+</head>
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+    }
+
+    form{
+        text-align: center;
+        margin:10px auto;
+    }
+
+    a{
+        text-decoration: none;
+        color: orange;
+    }
+
+    a:hover{
+        text-decoration: none;
+        color: #28a4c9;
+    }
+</style>
+<body>
+    <form>
+        <input type="checkbox"/><span>全选 &nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <a href="javascript:void(0)">反选</a><br>
+        <input type="checkbox">枯藤老树昏鸦<br>
+        <input type="checkbox">小桥流水人家<br>
+        <input type="checkbox">古道西风瘦马<br>
+        <input type="checkbox">夕阳西下&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+        <input type="checkbox">断肠人在天涯
+    </form>
+
+<script>
+    var all = document.getElementsByTagName("input");
+    var check = document.getElementsByTagName("span")[0];
+    var inverse = document.getElementsByTagName("a")[0];
+
+    var isCheckAll = function () {
+        for (var i = 1, n = 0; i < all.length; i++){
+            all[i].checked && n++;
+        }
+        all[0].checked = n == all.length - 1;
+        check.innerHTML = all[0].checked ? "全不选" : "全选";
+    }
+
+    all[0].onclick = function () {
+        for (var i = 1; i < all.length; i++)
+            all[i].checked = this.checked;
+        isCheckAll();
+    }
+
+    inverse.onclick = function () {
+        for (var i = 1; i < all.length; i++)
+            all[i].checked = !all[i].checked;
+        isCheckAll();
+    }
+</script>
+</body>
+</html>

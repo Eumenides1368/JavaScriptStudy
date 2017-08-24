@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>倒计时</title>
+    <link href="bootstrap.css" rel="stylesheet">
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+
+        .countdown{
+            width: 100px;
+            text-align: center;
+            margin:20px auto;
+        }
+    </style>
+</head>
+<body>
+<div class="countdown">
+    <span id="shownum">10</span>
+    <button class="btn btn-primary" id="start">开始</button>
+</div>
+
+<div class="countdown">
+    距离明年还有:
+    <span id="day"></span>天
+    <span id="hour"></span>小时
+    <span id="min"></span>分钟
+    <span id="sec"></span>秒
+    <button class="btn btn-default" id="start1">另一个倒计时</button>
+</div>
+
+<div class="countdown">
+    距明年还有<span id="day1"></span>天
+</div>
+<script>
+    var start = document.getElementById("start");
+
+    start.onclick = function runCount (time) {
+        var time = document.getElementById("shownum").innerHTML;
+
+        if (time > 0){
+            time--;
+            document.getElementById("shownum").innerHTML = time;
+            setTimeout(function () {
+                runCount(time);
+            }, 1000);
+        }else{
+            document.getElementById("shownum").innerHTML = "倒计时结束";
+        }
+    }
+
+    var a = 123456890;
+    var start1 = document.getElementById("start1");
+    start1.onclick = function calTime() {
+        var date = new Date();
+        date.setTime(0);
+        var date1 = new Date();
+        a = a - 1000;
+        date1.setTime(a);
+
+        var day = date.getDate();
+        var hour = date.getHours();
+        var min = date.getMinutes();
+        var sec = date.getSeconds();
+
+        var day1 = date1.getDate();
+        var hour1 = date1.getHours();
+        var min1 = date1.getMinutes();
+        var sec1 = date1.getSeconds();
+
+        var myDay = day1 - day;
+        var myHour = hour1 - hour;
+        var myMin = min1 - min;
+        var mySec = sec1 - sec;
+
+        console.log(mySec);
+
+        document.getElementById("day").innerHTML = myDay;
+        document.getElementById("hour").innerHTML = myHour;
+        document.getElementById("min").innerHTML = myMin;
+        document.getElementById("sec").innerHTML = mySec;
+
+        setTimeout(function () {
+            calTime();
+        }, 1000);
+    }
+
+    //按照天来倒计时
+    function countByDay() {
+        var nextYear = new Date("01/01/2018");
+        var now = new Date();
+        var num = 0;
+        var delta = nextYear - now;
+        //向下取整
+        var d = Math.floor(delta / (1000 * 60 * 60 * 24));
+        if (d >= 0 )
+            num = d + 1;
+        else
+            num = 0;
+        document.getElementById("day1").innerHTML = String(num);
+    }
+    countByDay();
+</script>
+</body>
+</html>

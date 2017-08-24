@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>继承/原型链</title>
+</head>
+<body>
+<script>
+    function Foo() {};
+    var f1 = new Foo();
+    f1.a = 10;
+    Foo.prototype.a = 100;
+    Foo.prototype.b = 200;
+
+    console.log(f1.a);
+    console.log(f1.b);
+
+    //如何区分一个属性是基本属性还是从原型中找到的？使用hasOwnProperty，尤其是在for-in循环中
+    var item;
+    for (item in f1){
+        console.log(item);
+        //a.b
+    }
+
+    for (item in f1){
+        if (f1.hasOwnProperty(item)){
+           console.log(item);
+        }
+        console.log(f1.hasOwnProperty(item));//true, false
+    }
+
+    //继承的灵活性
+    var obj = {a:20, b:30};
+    console.log(obj.toString());
+
+    var arr = [1, 2, true];
+    console.log(arr.toString());
+
+    //自定义
+    function Foo() {};
+    var f = new Foo();
+
+    Foo.prototype.toString = function(){
+        return "Hello, world!";
+    };
+    console.log(f.toString());
+
+    function fn(x) {
+        console.log(x);
+        console.log(arguments);
+    }
+    fn(10);
+
+</script>
+</body>
+</html>

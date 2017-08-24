@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>网页换肤</title>
+    <link href="bootstrap.css" rel="stylesheet">
+    <link href="red.css" rel="stylesheet">
+    <style>
+        body, ul, li{
+            margin:0;
+        }
+
+        html, body{
+            height:100%;
+        }
+
+        li{
+            list-style-type: none;
+            display: inline;
+        }
+
+        #nav{
+            /*当内容溢出元素框当时候*/
+            overflow: hidden;
+            zoom: 1;
+            margin: 20px 200px;
+            text-align: center;
+            width:1000px;
+        }
+
+        #nav ul{
+            display: inline;
+        }
+        #nav li{
+            border: 2px solid #aaaaaa;
+            border-right:1px solid #aaaaaa;
+            margin: 0px;
+            float: left;
+            width: 100px;
+            line-height: 30px;
+            text-align: center;
+        }
+        
+        a:hover{
+            color: #000;
+            text-decoration: none;
+        }
+
+        a:visited{
+            text-decoration: none;
+        }
+
+        #skin{
+            margin: 10px 0;
+        }
+
+        #skin ul{
+            display: block;
+        }
+        #skin li{
+            float: left;
+            width: 20px;
+            height: 20px;
+
+        }
+        #red{
+            width: 20px;
+            height:20px;
+            /*border: 2px solid red;*/
+            background-color: red;
+        }
+
+        #blue{
+            width: 20px;
+            height: 20px;
+            background-color: #46b8da;
+        }
+
+        #black{
+            width: 20px;
+            height: 20px;
+            background-color: #8c8c8c;
+        }
+    </style>
+</head>
+<body>
+    <div id="all">
+        <ul id="skin">
+            <li id="red" class="current"></li>
+            <li id="blue"></li>
+            <li id="black"></li>
+        </ul>
+        <br>
+        <ul id="nav">
+            <li><a href="javascript:void(0)">新闻</a></li>
+            <li><a href="javascript:void(0)">娱乐</a></li>
+            <li><a href="javascript:void(0)">体育</a></li>
+            <li><a href="javascript:void(0)">电影</a></li>
+            <li><a href="javascript:void(0)">电视剧</a></li>
+        </ul>
+    </div>
+
+<script>
+    function change () {
+        var oLink = document.getElementsByTagName("link")[1];
+        console.log(oLink);
+        var oSkin = document.getElementById("skin").getElementsByTagName("li");
+        console.log(oSkin);
+        for (var i = 0, len = oSkin.length; i < len; i++){
+            oSkin[i].onclick = function () {
+                for (var j = 0, length = oSkin.length; j < length; j++)
+                    oSkin[j].className = "";
+                this.className = "current";
+                console.log(oSkin[j]);
+                oLink['href'] = this.id + ".css";
+                console.log(oLink);
+            }
+        }
+    }
+
+    change();
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>frame</title>
+</head>
+<script>
+    var leftPos = (typeof window.screenLeft == "number") ? window.screenLeft : window.screenX;
+    var rightPos = (typeof window.screenTop == "number") ? window.screenTop : window.screenY;
+    console.log(leftPos);
+    console.log(rightPos);
+
+    window.moveTo(0, 0);
+    window.moveBy(100, 300);
+
+    var pageWidth = window.innerWidth;
+    var pageHeight = window.innerHeight;
+
+    if (typeof pageWidth != "number"){
+        if (document.compatMode == "CSS1Compat"){
+            pageWidth = document.documentElement.clientWidth;
+            pageHeight = document.documentElement.clientHeight;
+        }else{
+            pageWidth = document.body.clientWidth;
+            pageHeight = document.body.clientHeight;
+        }
+    }
+    console.log("pageWidth:" + pageWidth);
+    console.log("pageHeight:" + pageHeight);
+</script>
+</html>

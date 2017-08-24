@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>显示momo</title>
+    <link href="bootstrap.css" rel="stylesheet">
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+        }
+
+        #all{
+            width: 625px;
+            height: 240px;
+            border: 1px solid orange;
+            margin: 20px auto;
+            padding: 10px;
+        }
+
+        .momo{
+            width: 180px;
+            height: 180px;
+            float: left;
+            margin: 10px;
+            border: 1px solid #d58512;
+            background-color: #e2e2e2;
+        }
+
+        img{
+            width: 240px;
+            height: 240px;
+        }
+
+        .show{
+            margin: -41px;
+            border: 1px solid orange;
+            display: block;
+        }
+
+        .hide{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="all">
+        <div class="momo">
+            momo1
+            <img src="../image/momo1.jpg" class="hide">
+        </div>
+        <div class="momo">
+            momo2
+            <img src="../image/momo2.jpg" class="hide">
+        </div>
+        <div class="momo">
+            momo3
+            <img src="../image/momo3.jpg" class="hide">
+        </div>
+    </div>
+
+<script>
+    var momo = document.getElementsByClassName("momo");
+    for (var i = 0, len = momo.length; i < len; i++){
+        momo[i].onmouseover = function () {
+            var img = this.getElementsByTagName("img")[0];
+            img.className = "show";
+        }
+        momo[i].onmouseout = function () {
+            var img = this.getElementsByTagName("img")[0];
+            img.className = "hide";
+        }
+    }
+</script>
+</body>
+</html>

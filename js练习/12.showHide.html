@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>单一按钮显示／隐藏</title>
+    <link href="bootstrap.css" rel="stylesheet">
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+        }
+
+        #poem{
+            width: 150px;
+            height:auto;
+            border: 1px solid orange;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        ul{
+            padding: 0;
+            list-style: none;
+        }
+
+        h3{
+            border-bottom: 2px solid orange;
+        }
+        #id{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div id="poem">
+    <h3>山居秋暝</h3>
+    <ul id="bai">
+        <li>空山新雨后</li>
+        <li>天气晚来秋</li>
+        <li>明月松间照</li>
+        <li>清泉石上流</li>
+        <li>竹喧归浣女</li>
+        <li>莲动下渔舟</li>
+        <li>随意春芳歇</li>
+        <li>王孙自可留</li>
+    </ul>
+</div>
+<script>
+    var mountain = document.getElementsByTagName("h3")[0];
+    var poem = document.getElementById("bai");
+    mountain.onclick = function () {
+        var isExist = poem.style.display;
+        console.log(isExist);
+        if (isExist == "block")
+            poem.style.display = "none";
+        else
+            poem.style.display = "block";
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>this</title>
+</head>
+<body>
+<script>
+    //函数中的this到底取何值,是在函数被调用时确定的
+    function Foo() {
+        this.name = "Nike";
+        this.year = 1368;
+
+        console.log(this);
+    }
+    var f1 = new Foo();
+
+    console.log(f1.name);
+    console.log(f1.year);
+
+    function Fool() {
+        this.name = "Ming";
+        this.year = 1405;
+        console.log(this);
+    }
+    //此处不是new出来的
+    Fool();
+
+    var obj = {
+        x: 10,
+        fn: function () {
+            console.log(this);
+            console.log(this.x);
+        }
+    };
+
+    var fn1 = obj.fn;
+    fn1();
+
+    //call或者apply
+    var obj = {
+        x: 10
+    };
+    var fn = function () {
+        console.log(this);
+        console.log(this.x);
+    }
+    fn.call(obj);
+
+    //全局，调用普通函数
+    console.log(this == window);
+    var x = 100;
+    var fn = function () {
+        console.log(this);
+        console.log(this.x);
+    };
+    fn();
+
+    var obj = {
+        x: 200,
+        fn: function () {
+            function f() {
+                //此时this仍然指向window
+                console.log(this);
+                console.log(this.x);
+            }
+            f();
+        }
+    };
+    obj.fn();
+
+    var x = 10;
+    function fn() {
+        console.log(x);
+    }
+    function show(f) {
+        var x = 20;
+        (function () {
+            f();
+        })();
+    }
+    show(fn);
+
+
+</script>
+</body>
+</html>

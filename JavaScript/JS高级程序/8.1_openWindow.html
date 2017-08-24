@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>导航和打开窗口</title>
+</head>
+<body>
+<script>
+//    window.open("https://www.baidu.com/", "topFrame");
+//    var win = window.open("https://www.baidu.com/", "winWindow", "height = 400, width = 400, top = 10, left = 10" +
+//        "resizable = yes");
+
+    var timeoutId = setTimeout(function () {
+        alert("Hello World!");
+    }, 1000);
+    clearTimeout(timeoutId);
+
+    var num = 0;
+    var max = 10;
+    var interval = null;
+    function increase() {
+        num++;
+        if (num == max){
+            clearInterval(interval);
+            alert("done");
+        }
+    }
+//    interval = setInterval(increase, 500);
+
+    if (confirm("谁是猫")){
+        alert("我是猫");
+    }else{
+        alert("全是猫");
+    }
+
+    var result = prompt("你是谁？", "");
+    if (result != null)
+        alert("欢迎欢迎，热烈欢迎" + result);
+</script>
+</body>
+</html>
