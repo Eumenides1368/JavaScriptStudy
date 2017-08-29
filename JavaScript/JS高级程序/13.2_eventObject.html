@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件对象</title>
+</head>
+<body>
+    <input type="button" value="一个测试按钮" id="myBtn"/>
+    <input type="button" value="测试按钮2" id="myBtn2">
+    <input type="button" value="测试按钮3" id="myBtn3">
+    <input type="button" value="测试按钮4" id="myBtn4">
+    <input type="button" value="测试按钮5" id="myBtn5">
+    <input type="button" value="测试按钮6" id="myBtn6">
+
+<script>
+    var btn = document.getElementById("myBtn");
+    btn.onclick = function (event) {
+        alert(event.type);
+    }
+
+    btn.addEventListener("click", function () {
+        alert(event.type);
+    }, false);
+
+
+    var btn2 = document.getElementById("myBtn2");
+    btn2.onclick = function (event) {
+        console.log(event.currentTarget == this);
+        console.log(event.target == this);
+    };
+
+    var btn3 = document.getElementById("myBtn3");
+    var handler = function (event) {
+        switch (event.type){
+            case "click":{
+                console.log("clicked");
+                break;
+            }
+            case "mouseover":{
+                event.target.style.backgroundColor = "red";
+                break;
+            }
+            case "mouseout":{
+                event.target.style.backgroundColor = "orange";
+                break;
+            }
+        }
+    };
+
+    btn3.onclick = handler;
+    btn3.onmouseover = handler;
+    btn3.onmouseout = handler;
+
+    var btn4 = document.getElementById("myBtn4");
+    btn4.onclick = function (event) {
+        alert("clicked");
+        //停止进一步冒泡，避免触发注册在上层的处理程序
+        event.stopPropagation();
+    };
+
+    document.body.onclick = function () {
+        alert("body clicked");
+    };
+
+    var btn5 = document.getElementById("myBtn5");
+    btn5.onclick = function (event) {
+        alert(event.eventPhase);
+    };
+
+    document.body.addEventListener("click", function (event) {
+        alert(event.eventPhase);
+    }, true);
+
+    document.body.onclick = function (event) {
+        alert(event.eventPhase);
+    };
+
+
+    var EventUtil = {
+        getEvent : function (event) {
+            return event ? event : window.event;
+        },
+
+        getTarget : function (event) {
+            return event.target ? event.target : event.srcElement;
+        },
+        
+        preventDefault : function (event) {
+            if (event.preventDefault)
+                event.preventDefault();
+            else
+                event.returnValue = false;
+        },
+
+        stopPropagation : function (event) {
+            if (event.stopPropagation)
+                event.stopPropagation();
+            else
+                event.cancelBubble = true;
+        }
+    }
+
+</script>
+</body>
+</html>

@@ -5,6 +5,70 @@
     <title>事件处理</title>
 </head>
 <body>
+    <div>
+        <input type="button" id="myBtn" value="显示id" />
+        <input type="button" id="newBtn" value="那恼人的IE">
+        <input type="button" id="btn" value="最终的实验">
+    </div>
+<script>
+<!--DOM2级事件-->
+    var btn = document.getElementById("myBtn");
 
+    var handler = function () {
+        alert(this.id);
+    }
+    btn.addEventListener("click", handler, false);
+
+    btn.addEventListener("click", function () {
+        alert("Hello world!");
+    }, false);
+
+    btn.removeEventListener("click", handler, false);
+
+//    IE
+//    attachEvent  detachEvent
+    var nBtn = document.getElementById("newBtn");
+    var newHandler = function () {
+        alert("clicking");
+    };
+/*
+    nBtn.attachEvent("onclick", newHandler);
+    nBtn.detachEvent("onclick", newHandler);
+*/
+    //跨浏览器
+    var EventUtil = {
+        addHandler : function (element, type, handler) {
+            if (element.addEventListener){
+                element.addEventListener(type, handler, false);
+            }else if (element.attachEvent){
+                element.attachEvent("on" + type, handler);
+            }else{
+                //DOM0，基本不用
+                element["on" + type] = handler;
+            }
+        },
+        
+        removeHandler : function (element, type, handler) {
+            if (element.removeEventListener){
+                element.removeEventListener(type, handler, false);
+            }else if (element.detachEvent){
+                element.detachEvent("on" + type, handler);
+            }else{
+                //DOM0，基本不用
+                element["on" + type] = null;
+            }
+        }
+    };
+
+    var lastBtn = document.getElementById("btn");
+    console.log(lastBtn);
+
+    var lastHandler = function () {
+        alert("一个兼容各种浏览器的按钮!");
+    }
+
+    EventUtil.addHandler(lastBtn, "click", lastHandler);
+    EventUtil.removeHandler(lastBtn, "click", lastHandler);
+</script>
 </body>
 </html>
